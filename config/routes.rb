@@ -3,13 +3,12 @@ Rails.application.routes.draw do
   devise_for :users
   devise_for :articles
 
-  resources :users
-
   resources :articles do
     resources :comments
   end
-
+  
   root to: "articles#index"
+  get ":page" => "pages#show"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

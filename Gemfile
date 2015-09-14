@@ -28,7 +28,8 @@ gem 'materialize-sass'
 gem 'devise'
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
+gem 'bcrypt', '~> 3.1.10'
+#gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
