@@ -31,6 +31,9 @@ gem 'devise'
 gem 'bcrypt', '~> 3.1.10'
 #gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
+gem 'gravtastic', '~> 3.2.6'
+
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
