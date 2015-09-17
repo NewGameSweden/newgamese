@@ -10,7 +10,13 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
-      t.integer :social_security_number
+      t.string :first_name
+      t.string :surname
+      t.integer :social_security_number, :limit => 8
+      t.string :phone_number
+      t.integer :postal_code
+      t.string :postal_address
+      t.string :address
 
       ## Rememberable
       t.datetime :remember_created_at
