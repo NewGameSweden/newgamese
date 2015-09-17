@@ -19,7 +19,7 @@
 
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<% if user_signed_in? %>
-					<li><%= link_to(image_tag(current_user.gravatar_url(:size => 40), class: "center-align valign responsive-img") + "\t\t\t\t\t" +current_user.username, "/profile", class: "valign-wrapper") %></li>
+					<li><%= link_to(image_tag(current_user.gravatar_url(:size => 40), class: "center-align valign responsive-img") +current_user.username, "/profile", class: "valign-wrapper") %></li>
 					<li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
 				<% else %>
 					<li><%= link_to('Login', new_user_session_path) %></li>
@@ -28,7 +28,6 @@
 				<%= nav_link 'Alla nyheter', articles_path %>
 			</ul>
 			<ul class="side-nav" id="mobile-collapse">
-				
 				<%= nav_link 'Skapa nyhet', new_article_path %>
 				<%= nav_link 'Alla nyheter', articles_path %>
 			</ul>
