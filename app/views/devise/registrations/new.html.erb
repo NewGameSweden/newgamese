@@ -9,27 +9,57 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label "Lösenord" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(minst <%= @minimum_password_length %> tecken)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label "Lösenord" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :username %><br />
+    <%= f.label "Användarnamn" %><br />
     <%= f.text_field :username %>
   </div>
 
   <div class="field">
-    <%= f.label :social_security_number %><br />
+    <%= f.label "Personnummer" %><br />
     <%= f.text_field :social_security_number %>
   </div>
+
+  <div class="field">
+    <%= f.label "Namn" %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Efternamn" %><br />
+    <%= f.text_field :surname %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Telefon" %><br />
+    <%= f.text_field :phone_number %>
+  </div>
+  
+  <div class="field">
+    <%= f.label "Adress" %><br />
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Postadress" %><br />
+    <%= f.text_field :postal_address %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Postnummer" %><br />
+    <%= f.text_field :postal_code %>
+  </div>  
 
   <div class="actions">
     <%= f.submit "Sign up" %>

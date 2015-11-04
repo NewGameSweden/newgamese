@@ -8,7 +8,16 @@
 		</div>
 		
 	</div>
+	<div class="row">
+		<p>Member since: <%= distance_of_time_in_words(Time.now, current_user.created_at) %></p>
+		<p>Namn: <%=current_user.first_name %></p>
+		<p>Efternamn: <%=current_user.surname %></p>
+		<p>Tel. :<%= current_user.phone_number%></p>
+		<p>Adress:<%= current_user.address%></p>
+		<p>Postadress:<%= current_user.postal_address%></p>
+		<p>Postnummer:<%= current_user.postal_code%></p>
+	</div>
 </div>
 
-<p>Member since: <%= distance_of_time_in_words(Time.now, current_user.created_at) %></p>
+
 

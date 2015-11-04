@@ -1,12 +1,12 @@
 development: &default
-  adapter: postgresql
-  encoding: unicode
-  database: postgres
+  adapter: mysql2
+  encoding: utf8
+  database: newgame_dev
   pool: 5
-  username: postgres
+  username: root
   password:
-  host: db
+  host: localhost
 
 test:
   <<: *default
-  database: myapp_test
+  database: newgame_test
