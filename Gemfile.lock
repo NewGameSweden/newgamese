@@ -164,7 +164,6 @@ DEPENDENCIES
   gravtastic (~> 3.2.6)
   jbuilder (~> 2.0)
   jquery-rails
-  materialize-sass
   minitest (~> 5.8.0)
   mysql2 (~> 0.3.13)
   rails (= 4.2.0)
