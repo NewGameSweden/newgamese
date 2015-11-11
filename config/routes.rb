@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users
   devise_for :articles
 
   resources :articles do
     resources :comments
+  end
+
+  resources :events do 
+    resources :seatmaps
   end
   
   root to: "articles#index"

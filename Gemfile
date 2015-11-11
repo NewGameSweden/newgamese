@@ -14,6 +14,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
+# easy forms
+gem 'simple_form', git: 'https://github.com/plataformatec/simple_form'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -27,6 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 
 gem 'minitest', '~> 5.8.0'
+gem 'bootstrap-sass', '~> 3.3.5'
 
 # Use ActiveModel has_secure_password
 #gem 'bcrypt', '~> 3.1.10'
@@ -51,4 +54,3 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
