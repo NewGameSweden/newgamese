@@ -1,0 +1,10 @@
+<%= simple_form_for(@event, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :last_reserv_date, label_html: { class: 'datepicker' } %>
+  <%= f.input :start_at, label_html: { class: 'datepicker' }%>
+  <%= f.input :end_at, label_html: { class: 'datepicker' } %>
+  <%= f.input :location %>
+  <%= f.input :seatmap, :collection => Seatmap.all %>
+  <%= f.button :submit %>
+<% end %>

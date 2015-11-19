@@ -16,13 +16,14 @@ class EventsController < ApplicationController
   end
 
   def create
+    puts params.inspect
     @event = Event.new(event_params)
-
-      if @event.save
-        redirect_to @event
-      else
-        render 'new'
-      end
+    @event.seatmap = Seatmap.find(params[:event][:seatmap])
+    if @event.save
+      redirect_to @event
+    else
+      render 'new'
+    end
   end
 
   def update
