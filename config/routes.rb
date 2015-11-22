@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   end
 
   resources :events do 
-    resources :seatmaps
+    resources :seatmaps do
+      resources :rows
+    end
   end
-  
+
   root to: "articles#index"
   get ":page" => "pages#show"
 

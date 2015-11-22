@@ -1,0 +1,6 @@
+<%= f.input :name %>
+<%= f.input :x_coord %>
+<%= f.input :y_coord %>
+<%= f.simple_fields_for :seat do |fs| %>
+  <%= fs.input :number %>
+<% end %>
