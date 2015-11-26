@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :seats
+
+  resources :rows
+
+  resources :seatmaps
+
   devise_for :users
   devise_for :articles
 
