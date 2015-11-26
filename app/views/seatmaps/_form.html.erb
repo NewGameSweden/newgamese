@@ -1,0 +1,10 @@
+<%= simple_form_for(@seatmap) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, label: "Seatmap name" %>
+
+  <%= f.nested_fields_for :rows do |row| %>
+    <%= render 'row_fields', :f => row %>
+  <% end %>
+  <%= f.add_nested_fields_link :rows %>
+  <%= f.button :submit %>
+<% end %>

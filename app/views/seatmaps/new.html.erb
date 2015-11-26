@@ -1,7 +1,5 @@
-<%= simple_form_for(@seatmap, :url => event_seatmaps_path, html: { class: 'form-horizontal form-user' }) do |f| %>
-  <%= f.input :name %>
-  <%= f.simple_fields_for :row do |fr| %>
-    <%= render 'row_fields', :f => fr %>
-  <% end %>
-  <%= f.button :submit, "Create", class: 'btn btn-lg btn-primary btn-block' %>
-<% end %>
+<h1>New Seatmap</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', seatmaps_path %>

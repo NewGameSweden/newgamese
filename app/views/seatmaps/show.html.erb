@@ -1,0 +1,13 @@
+<p>
+  <strong>Name:</strong>
+  <%= @seatmap.name %>
+</p>
+<p>
+  <strong>Rows:</strong>
+  <% for row in @seatmap.rows %>
+    <%= row.name %>
+  <% end %>
+</p>
+<%= debug(params) %>
+<%= link_to 'Edit', edit_seatmap_path(@seatmap) %> |
+<%= link_to 'Back', seatmaps_path %>

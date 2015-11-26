@@ -1,6 +1,7 @@
 class Seatmap < ActiveRecord::Base
-  belongs_to :event
-  has_many :rows, dependent: :destroy
-  accepts_nested_attributes_for :rows, :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
-  validates :name, allow_blank: false, presence: true
+  has_many :rows
+  has_many :seats, :through => :rows
+  validates :name, presence: true, allow_blank: false
+  accepts_nested_attributes_for :rows
+  accepts_nested_attributes_for :seats
 end
