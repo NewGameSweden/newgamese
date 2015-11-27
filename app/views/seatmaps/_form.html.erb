@@ -4,7 +4,8 @@
 
   <%= f.nested_fields_for :rows do |row| %>
     <%= render 'row_fields', :f => row %>
+    <%= row.remove_nested_fields_link 'Remove me', class: 'btn btn-danger', role: 'button' %>
   <% end %>
-  <%= f.add_nested_fields_link :rows %>
+  <%= f.add_nested_fields_link :rows, 'Add row', class: 'btn btn-primary', role: 'button' %>
   <%= f.button :submit %>
 <% end %>

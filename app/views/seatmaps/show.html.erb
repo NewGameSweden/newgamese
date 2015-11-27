@@ -6,8 +6,9 @@
   <strong>Rows:</strong>
   <% for row in @seatmap.rows %>
     <%= row.name %>
+    <%= row.x_coord %>
+    <%= row.y_coord %>
   <% end %>
 </p>
-<%= debug(params) %>
 <%= link_to 'Edit', edit_seatmap_path(@seatmap) %> |
 <%= link_to 'Back', seatmaps_path %>
