@@ -74,6 +74,6 @@ class SeatmapsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seatmap_params
-      params.require(:seatmap).permit(:name, rows_attributes: [:id, :name, :x_coord, :y_coord])
+      params.require(:seatmap).permit(:name, rows_attributes: [:id, :name, :x_coord, :y_coord, seats_attributes: [:id, :number]])
     end
 end

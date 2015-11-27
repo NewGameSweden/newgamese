@@ -3,5 +3,4 @@ class Seatmap < ActiveRecord::Base
   has_many :seats, :through => :rows
   validates :name, presence: true, allow_blank: false
   accepts_nested_attributes_for :rows
-  accepts_nested_attributes_for :seats
 end

@@ -1,3 +1,8 @@
 <%= f.input :name, label: "Row name" %>
 <%= f.input :x_coord %>
 <%= f.input :y_coord %>
+<%= f.nested_fields_for :seats do |seat| %>
+  <%= render 'seat_fields', :f => seat %>
+  <%= seat.remove_nested_fields_link 'Remove me', class: 'btn btn-danger', role: 'button' %>
+<% end %>
+<%= f.add_nested_fields_link :seats, 'Add seat', class: 'btn btn-primary', role: 'button' %>
