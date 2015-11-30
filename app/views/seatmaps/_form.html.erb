@@ -1,10 +1,11 @@
-<%= simple_form_for(@seatmap) do |f| %>
+<%= simple_form_for(@seatmap, html: { class: "form-horizontal"}) do |f| %>
   <%= f.error_notification %>
-  <%= f.input :name, label: "Seatmap name" %>
+  <%= f.input :name, label: false, placeholder: "Seatmap name" %>
 
   <%= f.nested_fields_for :rows do |row| %>
+    <h4>Rows</h4>
     <%= render 'row_fields', :f => row %>
-    <%= row.remove_nested_fields_link 'Remove me', class: 'btn btn-danger', role: 'button' %>
+    <%= row.remove_nested_fields_link 'Remove row', class: 'btn btn-danger col-md-offset-1 col-md-3', role: 'button' %>
   <% end %>
   <%= f.add_nested_fields_link :rows, 'Add row', class: 'btn btn-primary', role: 'button' %>
   <%= f.button :submit %>
