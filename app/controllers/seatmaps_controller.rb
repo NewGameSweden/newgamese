@@ -11,6 +11,14 @@ class SeatmapsController < ApplicationController
   # GET /seatmaps/1.json
   def show
     @seatmap = Seatmap.find(params[:id])
+    seatmap_array = Array.new
+    for row in @seatmap.rows
+      name = row.name
+      seats = row.seats
+      seatmap_array << name << seats
+    end
+    gon.namer = @seatmap.name
+    gon.seatmap = seatmap_array
   end
 
   # GET /seatmaps/new
