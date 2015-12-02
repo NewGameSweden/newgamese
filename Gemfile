@@ -31,6 +31,7 @@ gem 'devise'
 gem 'minitest', '~> 5.8.0'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'nested_form_fields'
+gem 'gon'
 
 # Use ActiveModel has_secure_password
 #gem 'bcrypt', '~> 3.1.10'
