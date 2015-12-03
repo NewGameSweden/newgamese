@@ -17,13 +17,7 @@
 //= require_tree .
 //= require nested_form_fields
 
-function renderSeatmap(){
-  seats = gon.seats;
-  rows = gon.rows;
-
-  var canvas = document.getElementById('smCanvas');
-  var ctx = canvas.getContext('2d');
-
+function renderSeatmap(ctx){
   //Render base canvas
   ctx.beginPath();
   ctx.rect(0, 0, 600, 300);
@@ -48,5 +42,36 @@ function renderSeatmap(){
   }
 }
 
-$(document).ready(renderSeatmap);
-$(document).on('page:load', renderSeatmap);
+function initSeatmap(){
+  seats = gon.seats;
+  rows = gon.rows;
+
+  var canvas = document.getElementById('smCanvas');
+  var ctx = canvas.getContext('2d');
+
+  renderSeatmap(ctx);
+  canvas.addEventListener('mousemove', function(evt) {
+    renderSeatmap(ctx);
+    var mousePos = getMousePos(canvas, evt);
+    var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+    printText(canvas, message, mousePos.x, mousePos.y);
+  }, false);
+}
+
+function getMousePos(canvas, evt) {
+  var rect = canvas.getBoundingClientRect();
+  return {
+    x: evt.clientX - rect.left,
+    y: evt.clientY - rect.top
+  };
+}
+
+function printText(canvas, message, x, y) {
+  var ctx = canvas.getContext('2d');
+  ctx.font = '18pt Calibri';
+  ctx.fillStyle = 'black';
+  ctx.fillText(message, x, y);
+}
+
+$(document).ready(initSeatmap);
+$(document).on('page:load', initSeatmap);
