@@ -38,6 +38,14 @@ class SeatmapsController < ApplicationController
   # POST /seatmaps
   # POST /seatmaps.json
   def create
+    # modifies parameters to create the number of seats specified
+    rows = params[:seatmap][:rows_attributes]
+    for i in 0..rows.length-1
+      number = params[:seatmap][:rows_attributes][i.to_s][:seats_attributes]["0"][:number]
+      for j in 0..number.to_i-1
+        params[:seatmap][:rows_attributes][i.to_s][:seats_attributes][j.to_s] = {:number => j}
+      end
+    end
     @seatmap = Seatmap.create(seatmap_params)
 
     respond_to do |format|

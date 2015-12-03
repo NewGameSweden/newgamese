@@ -5,8 +5,12 @@
   <%= f.nested_fields_for :rows do |row| %>
     <h4>Rows</h4>
     <%= render 'row_fields', :f => row %>
-    <%= row.remove_nested_fields_link 'Remove row', class: 'btn btn-danger col-md-offset-1 col-md-3', role: 'button' %>
+    <div class="row">
+      <%= row.remove_nested_fields_link 'Remove row', class: 'btn btn-danger', role: 'button' %>
+    </div>
   <% end %>
-  <%= f.add_nested_fields_link :rows, 'Add row', class: 'btn btn-primary', role: 'button' %>
-  <%= f.button :submit %>
+  <div class="row">
+    <%= f.add_nested_fields_link :rows, 'Add row', class: 'btn btn-primary', role: 'button' %>
+    <%= f.button :submit %>
+  </div>
 <% end %>

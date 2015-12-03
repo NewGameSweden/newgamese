@@ -3,7 +3,9 @@
 <%= f.input :y_coord, html: { class: "col-md-4"}, label: false, placeholder: "Y coordinate" %>
 <h4>Seats</h4>
 <%= f.nested_fields_for :seats do |seat| %>
-  <%= seat.remove_nested_fields_link "x", class: 'close', role: 'button' %>
+  <%= f.remove_nested_fields_link '', class: 'glyphicon glyphicon-remove', role: 'button'%>
   <%= render 'seat_fields', :f => seat %>
 <% end %>
-<%= f.add_nested_fields_link :seats, 'Add seat', class: 'btn btn-primary', role: 'button' %>
+<div class="row">
+  <%= f.add_nested_fields_link :seats, 'Add seat', class: 'btn btn-primary', role: 'button', id: 'addSeat'%>
+</div>
