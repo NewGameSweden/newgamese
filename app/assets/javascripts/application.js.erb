@@ -39,8 +39,8 @@ function renderSeatmap(){
     for(j = 0; j < seats[i].length; j++){
       console.log(seats[i][j].number);
       ctx.beginPath();
-      x = j < Math.floor((seats[i].length+3)/2) ? rows[i].x_coord : rows[i].x_coord + 10;
-      y = j < Math.floor((seats[i].length+3)/2) ? rows[i].y_coord + seats[i][j].number * 10 : rows[i].y_coord + seats[i][j].number * 10 - Math.floor((seats[i].length+3)/2)*10;
+      x = j < Math.floor(seats[i].length/2) ? rows[i].x_coord : rows[i].x_coord + 10;
+      y = j < Math.floor(seats[i].length/2) ? rows[i].y_coord + seats[i][j].number * 10 : rows[i].y_coord + seats[i][j].number * 10 - Math.floor(seats[i].length/2)*10;
       ctx.rect(x, y, 8, 8);
       ctx.fillStyle = 'green';
       ctx.fill();
