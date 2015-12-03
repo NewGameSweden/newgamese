@@ -18,11 +18,35 @@
 //= require nested_form_fields
 
 function renderSeatmap(){
-  //id = gon.id;
-  //rows = gon.rows;
-  console.log(gon.namer);
-  seatmap = gon.seatmap;
-  for(i = 0; i < seatmap.length ; i++){
-    console.log(seatmap[i]);
+  seats = gon.seats;
+  rows = gon.rows;
+
+  var canvas = document.getElementById('smCanvas');
+  var ctx = canvas.getContext('2d');
+
+  //Render base canvas
+  ctx.beginPath();
+  ctx.rect(0, 0, 600, 300);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = 'black';
+  ctx.stroke();
+
+  //Render all seats
+  for(i = 0; i < rows.length; i++){
+    console.log(rows[i].name + " " + rows[i].x_coord + ":" + rows[i].y_coord);
+    for(j = 0; j < seats[i].length; j++){
+      console.log(seats[i][j].number);
+      ctx.beginPath();
+      x = j < Math.floor((seats[i].length+3)/2) ? rows[i].x_coord : rows[i].x_coord + 10;
+      y = j < Math.floor((seats[i].length+3)/2) ? rows[i].y_coord + seats[i][j].number * 10 : rows[i].y_coord + seats[i][j].number * 10 - Math.floor((seats[i].length+3)/2)*10;
+      ctx.rect(x, y, 8, 8);
+      ctx.fillStyle = 'green';
+      ctx.fill();
+    }
   }
 }
+
+$(document).ready(renderSeatmap);
+$(document).on('page:load', renderSeatmap);

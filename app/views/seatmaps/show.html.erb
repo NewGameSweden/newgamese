@@ -2,12 +2,14 @@
   <strong>Name:</strong>
   <%= @seatmap.name %>
 </p>
+  <canvas id="smCanvas" width="600" height="300"></canvas>
 <p>
   <strong>Rows:</strong>
   <% for row in @seatmap.rows %>
     <%= row.name %>
     <%= row.x_coord %>
     <%= row.y_coord %>
+    <a href="#" onclick="renderSeatmap()">HEH</a>
   <% end %>
 </p>
 <%= link_to 'Edit', edit_seatmap_path(@seatmap) %>
