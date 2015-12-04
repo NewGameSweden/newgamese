@@ -42,8 +42,9 @@ class SeatmapsController < ApplicationController
     rows = params[:seatmap][:rows_attributes]
     for i in 0..rows.length-1
       number = params[:seatmap][:rows_attributes][i.to_s][:seats_attributes]["0"][:number]
+      state = params[:seatmap][:rows_attributes][i.to_s][:seats_attributes]["0"][:state]
       for j in 0..number.to_i-1
-        params[:seatmap][:rows_attributes][i.to_s][:seats_attributes][j.to_s] = {:number => j}
+        params[:seatmap][:rows_attributes][i.to_s][:seats_attributes][j.to_s] = {:number => j, :state => state.to_s}
       end
     end
     @seatmap = Seatmap.create(seatmap_params)
@@ -92,6 +93,6 @@ class SeatmapsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seatmap_params
-      params.require(:seatmap).permit(:name, rows_attributes: [:id, :name, :x_coord, :y_coord, seats_attributes: [:id, :number]])
+      params.require(:seatmap).permit(:name, rows_attributes: [:id, :name, :x_coord, :y_coord, seats_attributes: [:id, :number, :state]])
     end
 end

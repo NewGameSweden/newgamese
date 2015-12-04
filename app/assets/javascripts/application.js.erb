@@ -36,7 +36,11 @@ function renderSeatmap(ctx){
       x = j < Math.floor(seats[i].length/2) ? rows[i].x_coord : rows[i].x_coord + 10;
       y = j < Math.floor(seats[i].length/2) ? rows[i].y_coord + seats[i][j].number * 10 : rows[i].y_coord + seats[i][j].number * 10 - Math.floor(seats[i].length/2)*10;
       ctx.rect(x, y, 8, 8);
-      ctx.fillStyle = 'green';
+      if(seats[i][j].state == "available"){
+        ctx.fillStyle = 'green';
+      }else{
+        ctx.fillStyle = 'red';
+      }
       ctx.fill();
     }
   }
