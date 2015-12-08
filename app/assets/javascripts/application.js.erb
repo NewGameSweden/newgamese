@@ -17,8 +17,11 @@
 //= require_tree .
 //= require nested_form_fields
 
-function renderSeatmap(ctx){
+function renderSeatmap(canvas){
+  seats = gon.seats;
+  rows = gon.rows;
   //Render base canvas
+  ctx = canvas.getContext('2d');
   ctx.beginPath();
   ctx.rect(0, 0, 600, 300);
   ctx.fillStyle = 'white';
@@ -27,11 +30,11 @@ function renderSeatmap(ctx){
   ctx.strokeStyle = 'black';
   ctx.stroke();
 
+  console.log(seats[0][0].state);
+
   //Render all seats
   for(i = 0; i < rows.length; i++){
-    console.log(rows[i].name + " " + rows[i].x_coord + ":" + rows[i].y_coord);
     for(j = 0; j < seats[i].length; j++){
-      console.log(seats[i][j].number);
       ctx.beginPath();
       x = j < Math.floor(seats[i].length/2) ? rows[i].x_coord : rows[i].x_coord + 10;
       y = j < Math.floor(seats[i].length/2) ? rows[i].y_coord + seats[i][j].number * 10 : rows[i].y_coord + seats[i][j].number * 10 - Math.floor(seats[i].length/2)*10;
@@ -51,15 +54,40 @@ function initSeatmap(){
   rows = gon.rows;
 
   var canvas = document.getElementById('smCanvas');
-  var ctx = canvas.getContext('2d');
 
-  renderSeatmap(ctx);
+  renderSeatmap(canvas);
   canvas.addEventListener('mousemove', function(evt) {
-    renderSeatmap(ctx);
+    renderSeatmap(canvas);
     var mousePos = getMousePos(canvas, evt);
     var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
     printText(canvas, message, mousePos.x, mousePos.y);
   }, false);
+
+  canvas.addEventListener('mousedown', function(evt) {
+    handleMouseClick(canvas, evt);
+  }, false);
+}
+
+function handleMouseClick(canvas, evt){
+  var mousepos = getMousePos(canvas, evt);
+  console.log("mouse clicked at: " + mousepos.x + ":" ,mousepos.y);
+  data = JSON.stringify({
+      seatmap: {
+        name: "TEST3",
+        rows_attributes: [
+          {name: "asdfghi", x_coord: "123", y_coord: "123", seats_attributes: [
+            {number: 0, state: "available"},
+            {number: 3, state: "available"}
+          ]}
+        ]
+      }
+    });
+  updateMap(data);
+  renderSeatmap(canvas);
+}
+
+function getSeatFromCoord(inX, inY){
+
 }
 
 function getMousePos(canvas, evt) {
@@ -68,6 +96,15 @@ function getMousePos(canvas, evt) {
     x: evt.clientX - rect.left,
     y: evt.clientY - rect.top
   };
+}
+
+function updateMap(data){
+  $.ajax({
+    type: "PATCH",
+    contentType: 'application/json',
+    data: data,
+    dataType: 'json'
+  });
 }
 
 function printText(canvas, message, x, y) {

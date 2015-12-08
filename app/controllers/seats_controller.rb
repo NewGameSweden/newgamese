@@ -1,6 +1,5 @@
 class SeatsController < ApplicationController
   before_action :set_seat, only: [:show, :edit, :update, :destroy]
-
   # GET /seats
   # GET /seats.json
   def index
