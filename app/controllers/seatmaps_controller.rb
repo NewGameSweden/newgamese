@@ -11,7 +11,6 @@ class SeatmapsController < ApplicationController
   # GET /seatmaps/1.json
   def show
     @seatmap = Seatmap.find(params[:id])
-    set_gon_show_variables
   end
 
   # GET /seatmaps/new
@@ -68,7 +67,6 @@ class SeatmapsController < ApplicationController
         seat.save
       end
     end
-    set_gon_show_variables
     respond_to do |format|
       format.html { render :show}
     end
@@ -94,18 +92,6 @@ class SeatmapsController < ApplicationController
   end
 
   private
-    def set_gon_show_variables
-      seat_array = Array.new
-      row_array = Array.new
-      for row in @seatmap.rows
-        seats = row.seats
-        row_array << row
-        seat_array << seats
-      end
-      gon.map_name = @seatmap.name
-      gon.seats = seat_array
-      gon.rows = row_array
-    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_seatmap

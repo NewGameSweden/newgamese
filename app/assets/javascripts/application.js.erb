@@ -17,9 +17,10 @@
 //= require_tree .
 //= require nested_form_fields
 
+var seats, rows;
+var canvas;
+
 function renderSeatmap(canvas){
-  seats = gon.seats;
-  rows = gon.rows;
   //Render base canvas
   ctx = canvas.getContext('2d');
   ctx.beginPath();
@@ -30,16 +31,14 @@ function renderSeatmap(canvas){
   ctx.strokeStyle = 'black';
   ctx.stroke();
 
-  console.log(seats[0][0].state);
-
   //Render all seats
   for(i = 0; i < rows.length; i++){
-    for(j = 0; j < seats[i].length; j++){
+    for(j = 0; j < rows[i].seats.length; j++){
       ctx.beginPath();
-      x = j < Math.floor(seats[i].length/2) ? rows[i].x_coord : rows[i].x_coord + 10;
-      y = j < Math.floor(seats[i].length/2) ? rows[i].y_coord + seats[i][j].number * 10 : rows[i].y_coord + seats[i][j].number * 10 - Math.floor(seats[i].length/2)*10;
+      x = j < Math.floor(rows[i].seats.length/2) ? rows[i].x_coord : rows[i].x_coord + 10;
+      y = j < Math.floor(rows[i].seats.length/2) ? rows[i].y_coord + rows[i].seats[j].number * 10 : rows[i].y_coord + rows[i].seats[j].number * 10 - Math.floor(rows[i].seats.length/2)*10;
       ctx.rect(x, y, 8, 8);
-      if(seats[i][j].state == "available"){
+      if(rows[i].seats[j].state == "available"){
         ctx.fillStyle = 'green';
       }else{
         ctx.fillStyle = 'red';
@@ -50,12 +49,11 @@ function renderSeatmap(canvas){
 }
 
 function initSeatmap(){
-  seats = gon.seats;
-  rows = gon.rows;
+  seats = new Array();
+  rows = new Array();
+  updateSeatVariables();
+  canvas = document.getElementById('smCanvas');
 
-  var canvas = document.getElementById('smCanvas');
-
-  renderSeatmap(canvas);
   canvas.addEventListener('mousemove', function(evt) {
     renderSeatmap(canvas);
     var mousePos = getMousePos(canvas, evt);
@@ -83,7 +81,6 @@ function handleMouseClick(canvas, evt){
       }
     });
   updateMap(data);
-  renderSeatmap(canvas);
 }
 
 function getSeatFromCoord(inX, inY){
@@ -99,11 +96,30 @@ function getMousePos(canvas, evt) {
 }
 
 function updateMap(data){
+  console.log("updatemap run");
   $.ajax({
     type: "PATCH",
     contentType: 'application/json',
     data: data,
-    dataType: 'json'
+    dataType: 'json',
+    complete: function(){
+      console.log("updatemap done");
+      updateSeatVariables();
+    }
+  });
+}
+
+function updateSeatVariables(){
+  console.log("updateseat run");
+  $.ajax({
+    type: "GET",
+    contentType: 'application/json',
+    dataType: 'json',
+    success: function(data){
+      rows = data.rows;
+      renderSeatmap(canvas);
+      console.log("updateseat done");
+    }
   });
 }
 
