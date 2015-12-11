@@ -19,6 +19,8 @@
 
 var seats, rows;
 var canvas;
+const SEAT_SIZE = 20;
+const SEAT_GAP = 5;
 
 function renderSeatmap(canvas){
   //Render base canvas
@@ -35,9 +37,8 @@ function renderSeatmap(canvas){
   for(i = 0; i < rows.length; i++){
     for(j = 0; j < rows[i].seats.length; j++){
       ctx.beginPath();
-      x = j < Math.floor(rows[i].seats.length/2) ? rows[i].x_coord : rows[i].x_coord + 10;
-      y = j < Math.floor(rows[i].seats.length/2) ? rows[i].y_coord + rows[i].seats[j].number * 10 : rows[i].y_coord + rows[i].seats[j].number * 10 - Math.floor(rows[i].seats.length/2)*10;
-      ctx.rect(x, y, 8, 8);
+      coords = getViewCoord(i, j);
+      ctx.rect(coords.x, coords.y, SEAT_SIZE, SEAT_SIZE);
       if(rows[i].seats[j].state == "available"){
         ctx.fillStyle = 'green';
       }else{
@@ -66,25 +67,47 @@ function initSeatmap(){
   }, false);
 }
 
+//PARTLY DEBUG
 function handleMouseClick(canvas, evt){
   var mousepos = getMousePos(canvas, evt);
   console.log("mouse clicked at: " + mousepos.x + ":" ,mousepos.y);
-  data = JSON.stringify({
+  ij = getSeatFromCoord(mousepos.x, mousepos.y);
+  if(ij != false){
+    state = rows[ij.i].seats[ij.j].state;
+    newState = state == "available" ? "disabled" : "available";
+    data = JSON.stringify({
       seatmap: {
         name: "TEST3",
         rows_attributes: [
           {name: "asdfghi", x_coord: "123", y_coord: "123", seats_attributes: [
-            {number: 0, state: "available"},
-            {number: 3, state: "available"}
+            {number: ij.j, state: newState},
           ]}
         ]
       }
     });
-  updateMap(data);
+  }
+  updateMap();
 }
 
 function getSeatFromCoord(inX, inY){
+  for(i = 0; i < rows.length; i++){
+    for(j = 0; j < rows[i].seats.length; j++){
+      coords = getViewCoord(i, j);
+      if(inX >= coords.x && inX <= coords.x + SEAT_SIZE && inY >= coords.y && inY <= coords.y + SEAT_SIZE){
+        return {i: i, j: j};
+      }
+    }
+  }
+  return false;
+}
 
+function getViewCoord(rowNumber, seatNumber){
+  x = j < Math.floor(rows[i].seats.length/2) ? rows[i].x_coord : rows[i].x_coord + (SEAT_SIZE + SEAT_GAP);
+  y = j < Math.floor(rows[i].seats.length/2) ? rows[i].y_coord + rows[i].seats[j].number * (SEAT_SIZE + SEAT_GAP) : rows[i].y_coord + rows[i].seats[j].number * (SEAT_SIZE + SEAT_GAP) - Math.floor(rows[i].seats.length/2)*(SEAT_SIZE + SEAT_GAP);
+  return {
+    x: x,
+    y: y
+  };
 }
 
 function getMousePos(canvas, evt) {
@@ -96,21 +119,18 @@ function getMousePos(canvas, evt) {
 }
 
 function updateMap(data){
-  console.log("updatemap run");
   $.ajax({
     type: "PATCH",
     contentType: 'application/json',
     data: data,
     dataType: 'json',
     complete: function(){
-      console.log("updatemap done");
       updateSeatVariables();
     }
   });
 }
 
 function updateSeatVariables(){
-  console.log("updateseat run");
   $.ajax({
     type: "GET",
     contentType: 'application/json',
@@ -118,7 +138,6 @@ function updateSeatVariables(){
     success: function(data){
       rows = data.rows;
       renderSeatmap(canvas);
-      console.log("updateseat done");
     }
   });
 }
