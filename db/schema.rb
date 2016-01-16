@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204010530) do
+ActiveRecord::Schema.define(version: 20160116145334) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -71,6 +71,17 @@ ActiveRecord::Schema.define(version: 20151204010530) do
 
   add_index "seats", ["row_id"], name: "index_seats_on_row_id", using: :btree
 
+  create_table "tickets", force: :cascade do |t|
+    t.integer  "price",      limit: 4
+    t.string   "type",       limit: 255
+    t.boolean  "paid",       limit: 1
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -99,4 +110,5 @@ ActiveRecord::Schema.define(version: 20151204010530) do
   add_foreign_key "rows", "seatmaps"
   add_foreign_key "seatmaps", "events"
   add_foreign_key "seats", "rows"
+  add_foreign_key "tickets", "users"
 end

@@ -6,7 +6,7 @@
 			<div class="row"><div class="col 4"><h5><%= current_user.username %></h5></div></div>
 			<div class="row"><div class="col 4"><h5><%= current_user.email %></h5></div></div>
 		</div>
-		
+
 	</div>
 	<div class="row">
 		<p>Member since: <%= distance_of_time_in_words(Time.now, current_user.created_at) %></p>
@@ -16,8 +16,6 @@
 		<p>Adress:<%= current_user.address%></p>
 		<p>Postadress:<%= current_user.postal_address%></p>
 		<p>Postnummer:<%= current_user.postal_code%></p>
+		<p>ticket: <%= current_user.tickets.all.last.price %></p>
 	</div>
 </div>
-
-
-

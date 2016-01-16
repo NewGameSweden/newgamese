@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :tickets
+
   resources :seats
 
   resources :rows
