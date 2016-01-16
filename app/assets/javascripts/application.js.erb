@@ -45,6 +45,10 @@ function renderSeatmap(canvas){
         ctx.fillStyle = 'red';
       }
       ctx.fill();
+      if(rows[i].seats[j].selected == true){
+        ctx.rect(coords.x, coords.y, SEAT_SIZE, SEAT_SIZE);
+        ctx.stroke();
+      }
     }
   }
 }
@@ -54,6 +58,7 @@ function initSeatmap(){
   rows = new Array();
   updateSeatVariables();
   canvas = document.getElementById('smCanvas');
+  renderSeatmap(canvas);
 
   canvas.addEventListener('mousemove', function(evt) {
     renderSeatmap(canvas);
@@ -70,8 +75,11 @@ function initSeatmap(){
 //PARTLY DEBUG
 function handleMouseClick(canvas, evt){
   var mousepos = getMousePos(canvas, evt);
-  console.log("mouse clicked at: " + mousepos.x + ":" ,mousepos.y);
   ij = getSeatFromCoord(mousepos.x, mousepos.y);
+  if(ij.i != null && ij.j != null)
+    selectSeat(ij.i, ij.j);
+  renderSeatmap(canvas);
+  /*
   if(ij != false){
     state = rows[ij.i].seats[ij.j].state;
     newState = state == "available" ? "disabled" : "available";
@@ -86,7 +94,16 @@ function handleMouseClick(canvas, evt){
       }
     });
   }
-  updateMap();
+  updateMap();*/
+}
+
+function selectSeat(i, j){
+  for(k = 0; k < rows.length; k++){
+    for(m = 0; m < rows[i].seats.length; m++){
+      rows[k].seats[m].selected = false;
+    }
+  }
+  rows[i].seats[j].selected = true;
 }
 
 function getSeatFromCoord(inX, inY){
