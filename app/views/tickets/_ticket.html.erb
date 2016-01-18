@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-4">
+          <h3 class="panel-title">Ticket <%= ticket.ticket_type %></h3>
+        </div>
+        <div class="col-md-8 no-padding">
+          <% if ticket.paid %>
+            <p class="text-success text-right">Paid</p>
+          <% else %>
+            <p class="text-danger text-right">Unpaid</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <p>Price: <%= ticket.price %></p>
+      <%= ticket.user_id %>
+    </div>
+</div>
