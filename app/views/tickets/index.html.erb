@@ -2,10 +2,12 @@
 
 <h1>Listing Tickets</h1>
 
-<% current_user.tickets.each do |ticket| %>
+<% @tickets.each do |ticket| %>
   <%= render ticket %>
 <% end %>
 
 <br>
 
-<%= link_to 'New Ticket', new_ticket_path %>
+<% if current_user.admin? %>
+  <%= link_to 'New Ticket', new_ticket_path %>
+<% end %>

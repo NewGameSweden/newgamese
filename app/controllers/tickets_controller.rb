@@ -1,10 +1,15 @@
 class TicketsController < ApplicationController
+  before_action :authorize_admin, except: [:index, :show]
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+    if current_user.admin?
+      @tickets = Ticket.all
+    else
+      @tickets = Ticket.where(:user_id => current_user.id)
+    end
   end
 
   # GET /tickets/1
@@ -70,5 +75,9 @@ class TicketsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
       params.require(:ticket).permit(:price, :type, :paid, :user_id)
+    end
+
+    def authorize_admin
+      redirect_to tickets_path, alert: "Access denied" unless current_user.admin?
     end
 end
