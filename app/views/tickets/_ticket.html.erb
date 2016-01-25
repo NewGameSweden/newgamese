@@ -15,5 +15,10 @@
     </div>
     <div class="panel-body">
       <p class="text-right">Price: <%= ticket.price %></p>
+      <% if ticket.token == nil %>
+        <%= button_to "Activate", ticket_path(ticket), action: :activate, class: 'btn btn-default btn-success pull-right' %>
+      <% else %>
+        <p class="text-success text-right">Activated: <%= ticket.token %></p>
+      <% end %>
     </div>
 </div>

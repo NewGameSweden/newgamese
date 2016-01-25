@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :events do 
+  resources :events do
     resources :seatmaps do
       resources :rows
     end
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   root to: "articles#index"
   get ":page" => "pages#show"
-
+  post "tickets/:id" => "tickets#activate"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

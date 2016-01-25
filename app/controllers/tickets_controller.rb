@@ -1,6 +1,7 @@
 class TicketsController < ApplicationController
+  before_action :authenticate_user!
   before_action :authorize_admin, except: [:index, :show]
-  before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :set_ticket, only: [:show, :edit, :update, :destroy, :activate]
 
   # GET /tickets
   # GET /tickets.json
@@ -62,6 +63,16 @@ class TicketsController < ApplicationController
     @ticket.destroy
     respond_to do |format|
       format.html { redirect_to tickets_url, notice: 'Ticket was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  # Activate /tickets/activate
+  # Activate /tickets/activate.json
+  def activate
+    @ticket.activate
+    respond_to do |format|
+      format.html { redirect_to tickets_url, notice: 'Ticket was successfully activated.' }
       format.json { head :no_content }
     end
   end
