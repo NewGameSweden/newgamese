@@ -70,15 +70,6 @@ class SeatmapsController < ApplicationController
     respond_to do |format|
       format.html { render :show}
     end
-    #respond_to do |format|
-      #if @seatmap.update(seatmap_params)
-      #  format.html { redirect_to @seatmap, notice: 'Seatmap was successfully updated.' }
-      #  format.json { render :show, status: :ok, location: @seatmap }
-      #else
-      #  format.html { render :edit }
-      #  format.json { render json: @seatmap.errors, status: :unprocessable_entity }
-      #end
-    #end
   end
 
   # DELETE /seatmaps/1
