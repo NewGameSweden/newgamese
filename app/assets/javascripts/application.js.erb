@@ -73,37 +73,20 @@ function initSeatmap(){
   }, false);
 }
 
-//PARTLY DEBUG
 function handleMouseClick(canvas, evt){
   var mousepos = getMousePos(canvas, evt);
   ij = getSeatFromCoord(mousepos.x, mousepos.y);
   if(ij.i != null && ij.j != null)
     selectSeat(ij.i, ij.j);
   renderSeatmap(canvas);
-  /*
-  if(ij != false){
-    state = rows[ij.i].seats[ij.j].state;
-    newState = state == "available" ? "disabled" : "available";
-    data = JSON.stringify({
-      seatmap: {
-        name: "TEST3",
-        rows_attributes: [
-          {name: "asdfghi", x_coord: "123", y_coord: "123", seats_attributes: [
-            {number: ij.j, state: newState},
-          ]}
-        ]
-      }
-    });
-  }
-  updateMap();*/
 }
 
 function selectSeat(i, j){
   if(selectedSeat != null){
     rows[selectedSeat.i].seats[selectedSeat.j].selected = false;
   }
-  selectedSeat = {i: i, j: j};
   rows[i].seats[j].selected = true;
+  selectedSeat = {i: i, j: j};
 }
 
 function getSeatFromCoord(inX, inY){
