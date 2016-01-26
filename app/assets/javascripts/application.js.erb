@@ -18,6 +18,7 @@
 //= require nested_form_fields
 
 var seats, rows;
+var selectedSeat = {i: 0, j: 0};
 var canvas;
 const SEAT_SIZE = 20;
 const SEAT_GAP = 5;
@@ -98,11 +99,10 @@ function handleMouseClick(canvas, evt){
 }
 
 function selectSeat(i, j){
-  for(k = 0; k < rows.length; k++){
-    for(m = 0; m < rows[i].seats.length; m++){
-      rows[k].seats[m].selected = false;
-    }
+  if(selectedSeat != null){
+    rows[selectedSeat.i].seats[selectedSeat.j].selected = false;
   }
+  selectedSeat = {i: i, j: j};
   rows[i].seats[j].selected = true;
 }
 
