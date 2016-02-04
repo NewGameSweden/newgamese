@@ -6,12 +6,18 @@ It uses rails 4.2
 
 ## Setup
 ```bash
+
+
+#Download and install virtualbox version 4.3
+#https://www.virtualbox.org/wiki/Download_Old_Builds_4_3
+
+
 vagrant plugin install vagrant-vbguest vagrant-librarian-chef
 vagrant up
 vagrant ssh
 
 #Install programs in the vagrant environment
-echo "PATH=$PATH:/home/vagrant/.rbenv/versions/2.1.2/bin/"
+export PATH=$PATH:"/home/vagrant/.rbenv/versions/2.1.2/bin/"
 sudo apt-get install libcurl3 libcurl3-gnutls libcurl4-openssl-dev libmysqlclient-dev mysql-server redis-server
 
 #Install gems
@@ -19,7 +25,10 @@ cd /vagrant
 gem install bundler
 rbenv rehash
 bundle install
+
+#fetch file from Kevin
 vim config/secrets.yml
+#NOTICE: make sure to use 2 whitespaces, not tab.
 
 #Prepare database
 rake db:setup
@@ -31,7 +40,3 @@ rails s -b 0.0.0.0
 
 ```
 Reach the server by navigating to [localhost](http://localhost:3000)
-
-
-
-
