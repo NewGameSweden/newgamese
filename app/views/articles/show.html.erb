@@ -1,7 +1,7 @@
 <h1><%= @article.title %></h1>
 <p><%= @article.created_at %></p>
 <p><%= sanitize @article.text, tags: %w(a p b h2 h3 h4 code img) %></p>
-<%= link_to 'Back', articles_path, class: "waves-effect waves-light btn" %>
+<%= link_to 'Back', articles_path%>
 <br>
 <br>
 
@@ -18,9 +18,9 @@
   </p>
   <p>
     <%= f.label "Text" %><br>
-    <%= f.text_area :body, :class => "materialize-textarea" %>
+    <%= f.text_area :body%>
   </p>
   <p>
-    <%= f.submit 'Submit', :class => 'waves-effect waves-lighten btn' %>
+    <%= f.submit 'Submit'%>
   </p>
 <% end %>
