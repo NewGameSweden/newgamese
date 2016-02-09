@@ -2,8 +2,10 @@
 
 <h1>Listing Tickets</h1>
 
-<% @tickets.each do |ticket| %>
-  <%= render ticket %>
+<% if user_signed_in? %>
+  <% @tickets.each do |ticket| %>
+    <%= render ticket %>
+  <% end %>
 <% end %>
 
 <br>
