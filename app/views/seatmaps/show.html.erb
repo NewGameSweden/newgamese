@@ -3,5 +3,19 @@
   <%= @seatmap.name %>
 </p>
 <canvas id="smCanvas" width="600" height="300"></canvas>
+<br/>
+
+<% @seatmap.rows.each_slice(2) do |slice| %>
+  <% slice.each do |row| %>
+    <div class="seat_row">
+      <% row.seats.each do |seat| %>
+        <div class="seat" id=<%= row.name + "-" + seat.number.to_s%>><%= seat.number %></div>
+      <% end %>
+    </div>
+    <br/>
+  <% end %>
+  <br/>
+<% end %>
+
 <%= link_to 'Edit', edit_seatmap_path(@seatmap) %>
 <%= link_to 'Back', seatmaps_path %>
