@@ -4,8 +4,15 @@
 
 $ ->
   $('.seat').click ->
-    console.log("HEJSAN")
+    $(this).parent().parent().find('.seat').removeClass('selected')
+    $(this).addClass('selected')
+    $("#name").html('seats/' + $(this).attr("id").split('-')[1])
+    $.ajax(
+      url: '/seats/' + $(this).attr("id").split('-')[1] + '.json',
+      contentType: "application/json"
+      ).done (html) ->
+        console.log(html)
   $('.seat').hover(
-    (ev) -> $(this).css background: "#00b2ff" #blue
-    (ev) -> $(this).css background: "#3bff66" #green
+    (ev) -> $(this).addClass('hover')
+    (ev) -> $(this).removeClass('hover')
   )

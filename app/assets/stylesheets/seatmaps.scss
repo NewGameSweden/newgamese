@@ -9,6 +9,16 @@ div.seat_row div.seat {
     display: inline;
     background: #3bff66;
     margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+div.seat_row div.selected {
+    background: #ff4545;
+}
+
+div.seat_row div.hover {
+    background: #00b2ff
 }
 
 div.seat_row{
