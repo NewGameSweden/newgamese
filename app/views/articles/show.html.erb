@@ -1,6 +1,6 @@
 <h1><%= @article.title %></h1>
 <p><%= @article.created_at %></p>
-<p><%= sanitize @article.text, tags: %w(a p b h2 h3 h4 code img) %></p>
+<p><%= markdown @article.text %></p>
 <%= link_to 'Back', articles_path%>
 <br>
 <br>

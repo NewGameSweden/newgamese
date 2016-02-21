@@ -2,7 +2,7 @@
 <% @articles.order(created_at: :desc).each do |article| %>
 	<h4><%= link_to article.title, article_path(article) %></h4>
 	<p>Created at: <%= l article.created_at, format: :short %> | Updated at: <%= l article.updated_at, format: :short %></p>
-	<p><%= sanitize article.text, tags: %w(a p b h2 h3 h4 img) %></p><br>
+	<p><%= markdown article.text %></p><br>
 	<%= link_to 'Destroy', article_path(article), method: :delete, data: {confirm: 'Are you sure?'} %>
 	<%= link_to 'Edit', edit_article_path(article) %>
 	<%= link_to 'Show', article_path(article) %>
