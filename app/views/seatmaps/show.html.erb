@@ -9,13 +9,15 @@
   <% slice.each do |row| %>
     <div class="seat_row">
       <% row.seats.each do |seat| %>
-        <div class="seat" id=<%= row.name + "-" + seat.number.to_s%>><%= seat.number %></div>
+        <div class="seat" id=<%= row.name + "-" + seat.id.to_s%>></div>
       <% end %>
     </div>
     <br/>
   <% end %>
   <br/>
 <% end %>
+
+<p id="name"></p>
 
 <%= link_to 'Edit', edit_seatmap_path(@seatmap) %>
 <%= link_to 'Back', seatmaps_path %>
