@@ -35,6 +35,9 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'nested_form_fields'
 gem 'gon'
 
+# Markdown for articles
+gem 'github-markdown'
+
 # Use ActiveModel has_secure_password
 #gem 'bcrypt', '~> 3.1.10'
 #gem 'bcrypt-ruby', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'

@@ -83,6 +83,7 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.6.0)
+    github-markdown (0.6.9)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     gon (6.0.1)
@@ -201,6 +202,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
+  github-markdown
   gon
   gravtastic (~> 3.2.6)
   jbuilder (~> 2.0)
