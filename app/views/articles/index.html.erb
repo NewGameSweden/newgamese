@@ -1,3 +1,4 @@
+<% content_for :title do "Nyheter" end %>
 <% content_for :page_title do "Nyheter" end %>
 <% @articles.order(created_at: :desc).each do |article| %>
 	<h4><%= link_to article.title, article_path(article) %></h4>
