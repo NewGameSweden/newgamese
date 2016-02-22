@@ -8,9 +8,8 @@
 <% @articles.order(created_at: :desc).each do |article| %>
 	<h3>
 		<%= link_to article.title, article_path(article) %>
-		<%= article.created_at<=>Date.today %>
 		<% if article.created_at.today? %>
-			<span class="label label-default">New</span>
+			<span class="label label-primary">Ny</span>
 		<% end %>
 	</h3>
 	<p>Created at: <%= l article.created_at, format: :short %> | Updated at: <%= l article.updated_at, format: :short %></p>
