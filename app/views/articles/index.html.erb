@@ -1,7 +1,18 @@
 <% content_for :title do "Nyheter" end %>
-<% content_for :page_title do "Nyheter" end %>
+<% content_for :page_title do %>
+	<h1>
+		<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+		 Nyheter
+	</h1>
+<% end %>
 <% @articles.order(created_at: :desc).each do |article| %>
-	<h4><%= link_to article.title, article_path(article) %></h4>
+	<h3>
+		<%= link_to article.title, article_path(article) %>
+		<%= article.created_at<=>Date.today %>
+		<% if article.created_at.today? %>
+			<span class="label label-default">New</span>
+		<% end %>
+	</h3>
 	<p>Created at: <%= l article.created_at, format: :short %> | Updated at: <%= l article.updated_at, format: :short %></p>
 	<p><%= markdown article.text %></p><br>
 	<%= link_to 'Destroy', article_path(article), method: :delete, data: {confirm: 'Are you sure?'} %>
