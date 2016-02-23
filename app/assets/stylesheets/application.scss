@@ -1,7 +1,11 @@
 $brand-primary: #7d26cd;
+$navbar-default-link-color: #7d26cd;
+$navbar-default-link-hover-color: #a27dc3;
+$navbar-default-link-active-color: #7d26cd;
+$navbar-default-link-active-bg: #d0b6e8;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 
   body {
     display: flex;
@@ -48,4 +52,8 @@ $brand-primary: #7d26cd;
   .btn-remove {
     margin-left: 10px;
     margin-top: 27px;
+  }
+
+  .vcenter {
+    line-height: 50px;
   }
