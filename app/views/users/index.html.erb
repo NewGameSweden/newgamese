@@ -1,0 +1,19 @@
+<% content_for :title do "Användare" end %>
+<% content_for :page_title do %>
+	<h1>
+		<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+		 Användare
+    <small><%= @users.count %> st registrerade användare</small>
+	</h1>
+<% end %>
+
+<table class="table table-striped">
+  <th>Avatar</th>
+  <th>Namn</th>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= image_tag(user.gravatar_url(:size => 20, :default => "retro")) %></td>
+      <td><%= user.first_name %> <%= user.surname %></td>
+    </tr>
+  <% end %>
+</table>
