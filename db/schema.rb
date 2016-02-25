@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160122225619) do
+ActiveRecord::Schema.define(version: 20160225092402) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -45,28 +45,28 @@ ActiveRecord::Schema.define(version: 20160122225619) do
     t.string   "name",       limit: 255
     t.integer  "x_coord",    limit: 4
     t.integer  "y_coord",    limit: 4
+    t.integer  "seatmap_id", limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "seatmap_id", limit: 4
   end
 
   add_index "rows", ["seatmap_id"], name: "index_rows_on_seatmap_id", using: :btree
 
   create_table "seatmaps", force: :cascade do |t|
     t.string   "name",       limit: 255
+    t.integer  "event_id",   limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "event_id",   limit: 4
   end
 
   add_index "seatmaps", ["event_id"], name: "index_seatmaps_on_event_id", using: :btree
 
   create_table "seats", force: :cascade do |t|
-    t.integer  "number",     limit: 4
+    t.integer  "index",      limit: 4
+    t.string   "state",      limit: 255
+    t.integer  "row_id",     limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "row_id",     limit: 4
-    t.string   "state",      limit: 255
   end
 
   add_index "seats", ["row_id"], name: "index_seats_on_row_id", using: :btree
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20160122225619) do
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.boolean  "admin",                  limit: 1
+    t.string   "sex",                    limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
