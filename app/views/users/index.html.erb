@@ -7,6 +7,10 @@
 	</h1>
 <% end %>
 
+<h3>Könsfördelning</h3>
+<%= pie_chart User.group(:sex).count, colors: ["#F15854", "#5DA5DA"], library: { legend: { position: "none" }, chartArea: { left: "0", width: "30%" } } %>
+
+<h3>Användare</h3>
 <table class="table table-striped">
   <th>Avatar</th>
   <th>Namn</th>
