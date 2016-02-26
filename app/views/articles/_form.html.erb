@@ -13,16 +13,20 @@
 	<% end %>
 
 	<p>
-		<%= f.label :title %><br>
-		<%= f.text_field :title %>
+		<%= f.label :title%><br>
+		<%= f.text_field :title, class: "form-control input-sm" %>
+
 	</p>
 
 	<p>
-		<%= f.label :text %><br>
-		<%= f.text_area :text %>
+		<%= f.label :text%><br>
+		<%= f.text_area :text, class: "form-control input-lg"%>
 	</p>
 
   	<p>
-    	<%= f.submit 'Submit'%>
+    	<%= f.submit 'Submit', class: 'btn btn-lg btn-primary btn-block'%>
   	</p>
+
+
+
 <% end %>
