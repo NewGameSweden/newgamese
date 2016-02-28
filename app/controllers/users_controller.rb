@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       unless(response["member_errors"].nil?)
-        format.html { redirect_to users_url, notice: response["member_errors"].to_s.gsub(/\[|\]|\"|\>|\{|\}/, '').gsub('=', ' ') }
+        format.html { redirect_to users_url, alert: response["member_errors"].to_s.gsub(/\[|\]|\"|\>|\{|\}/, '').gsub('=', ' ') }
         format.json { render json: @users }
       else
         format.html { redirect_to users_url, notice: 'Successfully sent user to Sverok' }

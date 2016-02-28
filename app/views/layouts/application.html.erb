@@ -48,13 +48,19 @@
 		    </div><!--/.nav-collapse -->
 		</nav>
 
+		<% unless(notice.nil?) %>
+  		<div class="alert alert-info"><%= notice %></div>
+		<% end %>
+
+		<% unless(alert.nil?) %>
+  		<div class="alert alert-danger"><%= alert %></div>
+		<% end %>
+		
 		<div class="page-header">
 			<%= yield :page_title %>
 		</div>
     <%= yield %>
 
-  	<p class="notice red-text"><%= notice %></p>
-  	<p class="alert red-text"><%= alert %></p>
   </div><!-- /.container -->
 
 </body>
