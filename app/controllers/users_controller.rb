@@ -4,16 +4,17 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def send_usr_to_sverok(user)
+  def send_usr_to_sverok
+    user = User.find(params[:id])
     data = {
-      "api_key" => "8WuLHZIhow7zutkpgvzPTo7JgVkUu7rW",
+      "api_key" => ENV["SVEROK_API_KEY"],
       "member" => {
         "firstname"=> user.first_name,
         "renewed"=> Date.today.to_s,
         "lastname"=> user.surname,
-        "gender_id"=> 1,
+        "gender" => user.sex,
         "co"=>[],
-        "socialsecuritynumber"=> user.socialsecuritynumber,
+        "socialsecuritynumber"=> user.social_security_number.to_s,
         "email"=> user.email,
         "phone1"=> user.phone_number,
         "phone2"=>[],
@@ -28,12 +29,18 @@ class UsersController < ApplicationController
 
     request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
     request.body = data.to_json
-    puts data.to_json
 
     response = http.request(request)
-    puts "Response"
-    puts JSON.parse(response.body)
-    redirect_to users_url
+    response = JSON.parse(response.body)
+
+    respond_to do |format|
+      unless(response["member_errors"].nil?)
+        format.html { redirect_to users_url, notice: response["member_errors"].to_s.gsub(/\[|\]|\"|\>|\{|\}/, '').gsub('=', ' ') }
+        format.json { render json: @users }
+      else
+        format.html { redirect_to users_url, notice: 'Successfully sent user to Sverok' }
+        format.json { render json: @users }
+      end
+    end
   end
-  
 end
