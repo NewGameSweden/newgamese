@@ -14,10 +14,12 @@
 <table class="table table-striped">
   <th>Avatar</th>
   <th>Namn</th>
+	<th>Send</th>
   <% @users.each do |user| %>
     <tr>
       <td><%= image_tag(user.gravatar_url(:size => 20, :default => "retro")) %></td>
       <td><%= user.first_name %> <%= user.surname %></td>
+			<td><%= button_to 'Skicka till Sverok', "/users/#{user.id}/send", method: :post %></td>
     </tr>
   <% end %>
 </table>
