@@ -24,8 +24,9 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: "articles#index"
+  root to: "home#index"
   get ":page" => "pages#show"
+  get "/" => "home#index"
   post "tickets/:id" => "tickets#activate"
   post "users/:id/send" => "users#send_usr_to_sverok"
   # The priority is based upon order of creation: first created -> highest priority.
