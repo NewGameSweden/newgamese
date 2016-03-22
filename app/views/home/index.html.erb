@@ -1,6 +1,52 @@
-<% @articles.each do |art| %>
-  <p>
-    <%= art.text %>
-  </p>
-
-  <% end %>
+<!-- first section - Home -->
+<div class="pad-div", style="background: url(<%= asset_path 'bg.jpg' %>) no-repeat center center fixed">
+  <div class="text-vcenter">
+    <h1>New Game</h1>
+  </div>
+</div>
+<!-- /first section -->
+<!-- second section - About -->
+  <div id="about" class="pad-section">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 text-center">
+        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in sem cras amet.</h2>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed interdum metus et ligula venenatis, at rhoncus nisi molestie. Pellentesque porttitor elit suscipit massa laoreet metus.</p>
+      </div>
+    </div>
+  </div>
+<!-- /second section -->
+<!-- third section - Services -->
+<div id="services" class="pad-section">
+  <h2 class="text-center">Our Services</h2> <hr />
+  <div class="row text-center">
+    <div class="col-sm-3 col-xs-6">
+      <i class="glyphicon glyphicon-cloud"> </i>
+      <h4>Service 1</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in sem cras amet. Donec in sem cras amet.</p>
+    </div>
+    <div class="col-sm-3 col-xs-6">
+      <i class="glyphicon glyphicon-leaf"> </i>
+      <h4>Service 2</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in sem cras amet. Donec in sem cras amet.</p>
+    </div>
+    <div class="col-sm-3 col-xs-6">
+      <i class="glyphicon glyphicon-phone-alt"> </i>
+      <h4>Service 3</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in sem cras amet. Donec in sem cras amet.</p>
+    </div>
+    <div class="col-sm-3 col-xs-6">
+      <i class="glyphicon glyphicon-bullhorn"> </i>
+      <h4>Service 4</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in sem cras amet. Donec in sem cras amet.</p>
+    </div>
+  </div>
+</div>
+<!-- /third section -->
+<!-- fourth section - Information -->
+<div id="information" class="pad-section pad-div" style="background: url(<%= asset_path 'bg2.jpg' %>) no-repeat center center fixed">
+</div>
+<!-- /fourth section -->
+<!-- footer -->
+<footer>
+</footer>
+<!-- /footer -->
