@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
 
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-  resources :tickets
-
-  resources :seats
-
-  resources :rows
-
-  resources :seatmaps
-
   devise_for :users
   devise_for :articles
 
