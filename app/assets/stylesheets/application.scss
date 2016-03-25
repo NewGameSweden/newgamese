@@ -10,53 +10,101 @@ $text-color: #000;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-  body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
+/* general styles */
+html, body {
+  height: 100%;
+  width: 100%;
+}
+.container {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
 
-  main {
-    flex: 1 0 auto;
-  }
+/* padded section */
+.pad-section {
+  padding: 50px 0;
+}
 
-  div ul li img{
-  	margin-right: 10px;
-  }
+.pad-div {
+  display: table;
+  height: 60em;
+  position: relative;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
-  div ul li a{
-    height: 100%;
-    width: 100%;
+/* vertical-centered text */
+.text-vcenter {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+.text-vcenter h1 {
+  font-size: 4.5em;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
 
-    text-align: center;
-  }
+#services {
+  background-color: #7d26cd;
+  color: #ffffff;
+}
+#services .glyphicon {
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 60px;
+  height: 140px;
+  line-height: 140px;
+  text-align: center;
+  vertical-align: middle;
+  width: 140px;
+}
 
-  .form-user {
-    max-width: 600px;
-    padding: 15px;
-    margin: 0 auto;
-  }
+#information .panel {
+  opacity: 0.85;
+}
 
-  .form-user input[type="email"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-  .form-user .form-control {
-      position: relative;
-      height: auto;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      padding: 10px;
-      font-size: 16px;
-  }
+footer {
+  padding: 20px 0;
+}
+footer .glyphicon {
+  color: #333333;
+  font-size: 60px;
+}
+footer .glyphicon:hover {
+  color: #306d9f;
+}
 
-  .btn-remove {
-    margin-left: 10px;
-    margin-top: 27px;
-  }
+.form-user { max-width: 600px; padding: 15px;
+  margin: 0 auto;
+}
 
-  .vcenter {
-    line-height: 50px;
-  }
+.form-user input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-user .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.btn-remove {
+  margin-left: 10px;
+  margin-top: 27px;
+}
+
+.vcenter {
+  line-height: 50px;
+}
