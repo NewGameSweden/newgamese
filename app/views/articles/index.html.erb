@@ -1,21 +1,33 @@
 <% content_for :title do "Nyheter" end %>
-<% content_for :page_title do %>
-	<h1>
-		<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-		 Nyheter
-	</h1>
-<% end %>
+
 <% @articles.order(created_at: :desc).each do |article| %>
-	<h3>
-		<%= link_to article.title, article_path(article) %>
-		<% if article.created_at.today? %>
-			<span class="label label-primary">Ny</span>
-		<% end %>
-	</h3>
-	<p>Created at: <%= l article.created_at, format: :short %> | Updated at: <%= l article.updated_at, format: :short %></p>
-	<p><%= markdown article.text %></p><br>
-	<%= link_to 'Destroy', article_path(article), method: :delete, data: {confirm: 'Are you sure?'} %>
-	<%= link_to 'Edit', edit_article_path(article) %>
-	<%= link_to 'Show', article_path(article) %>
+	<div class="pad-div", style="background: url(<%= asset_path 'bg2.jpg' %>) no-repeat center center fixed">
+	</div>
+
+	<div class="pad-section article-title">
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1 col-lg-6 col-lg-offset-3">
+		  	<div class="text-vcenter">
+					<h1><%= article.title %></h1>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  <div class="pad-section">
+    <div class="row">
+			<div class="col-sm-10 col-sm-offset-1 col-lg-6 col-lg-offset-3">
+				<h4>
+					<%= article.created_at.strftime("%d") %> <%= article.created_at.strftime("%B") %>
+					<% if article.created_at.today? %>
+						<span class="label label-primary">Ny!</span>
+					<% end %>
+				</h4>
+				<%= markdown article.text %>
+				<%= link_to 'Destroy', article_path(article), method: :delete, data: {confirm: 'Are you sure?'} %>
+				<%= link_to 'Edit', edit_article_path(article) %>
+				<%= link_to 'Show', article_path(article) %>
+			</div>
+		</div>
+	</div>
 <% end %>
-<br>
