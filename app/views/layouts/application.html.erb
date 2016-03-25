@@ -24,7 +24,7 @@
 					<%= link_to 'New Game', "/", class: "navbar-brand"%>
 		    </div>
 		    <div id="navbar" class="collapse navbar-collapse">
-		      <ul class="nav navbar-nav">
+		      <ul class="nav navbar-nav" data-no-turbolink>
 		        <%= nav_link 'Skapa nyhet', new_article_path %>
 						<%= nav_link 'Alla nyheter', articles_path %>
 						<%= nav_link 'Events', events_path %>
