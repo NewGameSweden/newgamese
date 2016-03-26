@@ -29,11 +29,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Use devise for authentication
 gem 'devise'
+# Carrierwave to handle file uploads
+gem 'carrierwave'
 
 gem 'minitest', '~> 5.8.0'
 gem 'bootstrap-sass', '~> 3.3.5'
-gem 'nested_form_fields'
-gem 'gon'
 
 # Markdown for articles
 gem 'github-markdown'
