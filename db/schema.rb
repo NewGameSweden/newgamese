@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326171401) do
+ActiveRecord::Schema.define(version: 20160327174910) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -71,6 +71,15 @@ ActiveRecord::Schema.define(version: 20160326171401) do
   end
 
   add_index "seats", ["row_id"], name: "index_seats_on_row_id", using: :btree
+
+  create_table "sponsors", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.string   "logo",        limit: 255
+    t.string   "link",        limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "tickets", force: :cascade do |t|
     t.integer  "price",       limit: 4
