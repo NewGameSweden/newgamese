@@ -1,2 +1,14 @@
+<div class="pad-div", style="background: url(<%= asset_path 'bg.jpg' %>) no-repeat center center fixed"></div>
+
 <div class="pad-section">
+  <h1 class="text-center">Sponsors</h1><br>
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10">
+      <div class="row">
+        <% @sponsors.each do |sponsor| %>
+          <%= image_tag sponsor.logo, :class => "sponsor-image" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
