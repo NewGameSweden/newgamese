@@ -3,12 +3,10 @@
 <div class="pad-section">
   <h1 class="text-center">Sponsors</h1><br>
   <div class="row">
-    <div class="col-xs-offset-1 col-xs-10">
-      <div class="row">
-        <% @sponsors.each do |sponsor| %>
-          <%= image_tag sponsor.logo, :class => "sponsor-image" %>
-        <% end %>
-      </div>
+    <div class="col-xs-offset-1 col-xs-10 text-center">
+      <% @sponsors.each do |sponsor| %>
+        <%= image_tag sponsor.logo, :class => "sponsor-image" %>
+      <% end %>
     </div>
   </div>
 </div>
