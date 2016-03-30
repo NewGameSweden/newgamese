@@ -1,5 +1,3 @@
-<h1>Events#index</h1>
-
 <% @events.each do |event| %>
-  <h4><%= link_to event.name, event %></h4>
+  <%= render event %>
 <% end %>
