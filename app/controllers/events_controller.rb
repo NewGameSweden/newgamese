@@ -17,7 +17,6 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.seatmap = Seatmap.find(params[:event][:seatmap])
     if @event.save
       redirect_to @event
     else
