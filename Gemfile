@@ -39,6 +39,8 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'github-markdown'
 # Charts
 gem 'chartkick'
+# Wrapper for mailchimp api
+gem 'mailchimp-api', require: 'mailchimp'
 
 # Use ActiveModel has_secure_password
 #gem 'bcrypt', '~> 3.1.10'
