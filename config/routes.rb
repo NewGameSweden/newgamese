@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   resources :sponsors
 
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-  devise_for :users
-  devise_for :articles
+  devise_for :users, controllers: { registrations: "users/registrations" }
 
   resources :users, only: [:index]
 
