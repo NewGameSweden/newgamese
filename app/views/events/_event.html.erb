@@ -26,9 +26,9 @@
       <h3>Plats</h3>
       <p><%= event.location %></p>
       <h3>Tid</h3>
-      <p><%= event.start_at.strftime("%B %d, %Y") %></p>
-      <p><%= event.end_at.strftime("%B %d, %Y") %></p>
-      <p><%= event.last_reserv_date.strftime("%B %d, %Y") %></p>
+      <p><b>Börjar: </b><%= event.start_at.strftime("%d %b, %Y") %></p>
+      <p><b>Slutar: </b><%= event.end_at.strftime("%d %b, %Y") %></p>
+      <p><b>Sista reservering: </b><%= event.last_reserv_date.strftime("%d %b, %Y") %></p>
     </div>
   </div>
 </div>
