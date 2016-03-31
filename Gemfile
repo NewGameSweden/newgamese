@@ -40,7 +40,7 @@ gem 'github-markdown'
 # Charts
 gem 'chartkick'
 # Wrapper for mailchimp api
-gem 'mailchimp-api', require: 'mailchimp'
+gem 'gibbon'
 
 # Use ActiveModel has_secure_password
 #gem 'bcrypt', '~> 3.1.10'
