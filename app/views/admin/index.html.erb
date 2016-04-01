@@ -1,1 +1,17 @@
 <% content_for :title do "Admin panel" end %>
+
+<br>
+<br>
+<br>
+
+<%= form_tag "/admin/add_admin", :method => :post, :multipart => true do %>
+<%= select_tag "username", options_for_select(@users.where(:admin => nil).order(:username).collect { |user| user.username  }), {:include_blank => "Användare"} %>
+    <%= button_tag :class => "btn-large btn-primary", :action => "add" do %> Lägg till
+     <% end %>
+<% end %>
+
+<%= form_tag "/admin/remove_admin", :method => :post do %>
+<%= select_tag "username", options_for_select(@users.where(:admin => true).order(:username).collect { |user| user.username  }), {:include_blank => "Användare"} %>
+    <%= button_tag :class => "btn-large btn-primary", :action => "remove" do %> Ta bort
+     <% end %>
+<% end %>

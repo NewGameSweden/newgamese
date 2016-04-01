@@ -103,3 +103,12 @@ p {
   font-size: 1.5em;
   color: $gray;
 }
+
+.alert {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  z-index: 7000;
+  text-align: center;
+}

@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get ":page" => "pages#show"
   post "tickets/:id" => "tickets#activate"
   post "users/:id/send" => "users#send_usr_to_sverok"
+  post "admin/add_admin" => "admin#add_admin"
+  post "admin/remove_admin" => "admin#remove_admin"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
