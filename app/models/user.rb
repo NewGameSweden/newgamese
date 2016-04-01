@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
 	validates :first_name, :surname, :email,  :address, :postal_address, :presence => true, :allow_blank => false
 	validates :social_security_number, :phone_number, :postal_code, :presence => true, :allow_blank => false, :numericality => { only_integer: true }
 	validates :sex, presence: true, allow_blank: false
+
+  def find_by_username(username)
+    User.where(:username => username)
+  end
 end
