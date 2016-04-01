@@ -6,18 +6,16 @@ class AdminController < ApplicationController
   def index
     @users=User.all
   end
-  def add_admin
+  def handle_admin
     @user=User.where(:username => params[:username])[0]
-    @user.admin=true
-    @user.save!
-    flash[:notice] = "Ny admin tillagd"
+    if params[:add]
+      @user.admin=true
+      flash[:notice] = "Admin tillagd"
+    else
+      @user.admin=nil
+      flash[:notice] = "Admin bortaggen"
+    end
     redirect_to "/admin"
-  end
-  def remove_admin
-    @user=User.where(:username => params[:username])[0]
-    @user.admin=nil
     @user.save!
-    flash[:notice] = "Admin borttagen"
-    redirect_to "/admin"
   end
 end
