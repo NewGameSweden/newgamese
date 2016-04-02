@@ -1,11 +1,16 @@
 <% content_for :title do "Admin panel" end %>
 
-<br>
-<br>
-<br>
 
-<%= form_tag "/admin/handle_admin", :method => :post, :multipart => true do %>
-<%= select_tag "username", options_for_select(@users.all.order(:username).collect { |user| user.username  }), {:include_blank => "Användare"} %>
-    <%= button_tag :class => "btn-large btn-primary", :name => "add" do %> Lägg till<% end %>
-    <%= button_tag :class => "btn-large btn-primary" do %> Ta bort<% end %>
-<% end %>
+<div class="row create-content">
+  <div class="col-lg-8 col-lg-offset-2 col-sm-10 col-sm-offset-1">
+    <%= form_tag "/admin/handle_admin", :method => :post, :multipart => true do %>
+      <%= select_tag "username", options_for_select(@users.all.order(:username).collect { |user| user.username  }), {:include_blank => "Användare", :class => "form-control"} %>
+      <div clss="row">
+        <div class="col-lg-6">
+          <%= button_tag :class => "btn-lg btn-large btn-primary", :name => "add" do %> Lägg till<% end %>
+          <%= button_tag :class => "btn-lg btn-large btn-primary" do %> Ta bort<% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
