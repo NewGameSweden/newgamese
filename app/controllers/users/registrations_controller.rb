@@ -11,7 +11,7 @@ before_filter :configure_account_update_params, only: [:update]
   def create
     super
     gibbon = Gibbon::Request.new()
-    gibbon.lists("7d35e1f26f").members.create(body: {email_address: resource.email, status: "subscribed", merge_fields: {FNAME: resource.first_name, LNAME: resource.surname}})
+    gibbon.lists("7d35e1f26f").members(Digest::MD5.hexdigest(resource.email)).upsert(body: {email_address: resource.email, status: "subscribed", merge_fields: {FNAME: resource.first_name, LNAME: resource.surname}})
   end
 
   # GET /resource/edit
