@@ -1,1 +1,3 @@
-<%= render Event.order(start_at: :asc).first %>
+<% unless Event.first.nil? %>
+  <%= render Event.order(start_at: :asc).first %>
+<%end %>
