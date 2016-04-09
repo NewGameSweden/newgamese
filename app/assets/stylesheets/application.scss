@@ -4,7 +4,7 @@ $navbar-default-link-hover-color: #a27dc3;
 $navbar-default-link-active-color: #7d26cd;
 $navbar-default-link-active-bg: #d0b6e8;
 
-$body-bg: #fff;
+$body-bg: #ffffff;
 $text-color: #000;
 
 @import "bootstrap-sprockets";
@@ -16,6 +16,15 @@ html, body {
   height: 100%;
   width: 100%;
 }
+
+.brand-logo {
+  position: absolute;
+  width: 100%;
+  padding-left: 50%;
+  margin-top: -21px;
+  margin-left: -57px;
+}
+
 .container {
   width: 100%;
   padding-left: 0;
