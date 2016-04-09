@@ -1,10 +1,14 @@
-<%= simple_form_for(@user, :url => session_path(@user), html: { class: 'form-user' }) do |f| %>
-  <h2 class="form-signin-heading">Please sign in</h2>
-  <%= f.input :email, placeholder: "Email address", label: false, class: "sr-only"%>
-  <%= f.input :password, placeholder: "Password", label: false%>
-  <%= f.check_box :remember_me %>
-  <%= f.label "Remember me" %>
-  <%= f.button :submit, "Log in", class: 'btn btn-lg btn-primary btn-block' %>
-  <br>
-  <%= render "devise/shared/links" %>
-<% end %>
+<div class="row create-content">
+  <div class="col-lg-4 col-lg-offset-4 col-sm-10 col-sm-offset-1">
+    <%= simple_form_for(@user, :url => session_path(@user), html: { class: 'create-content' }) do |f| %>
+      <h2 class="form-signin-heading">Please sign in</h2>
+      <%= f.input :email, placeholder: "Email address", label: false, class: "sr-only"%>
+      <%= f.input :password, placeholder: "Password", label: false%>
+      <%= f.check_box :remember_me %>
+      <%= f.label "Remember me" %>
+      <%= f.button :submit, "Log in", class: 'btn btn-lg btn-primary btn-block' %>
+      <br>
+      <%= render "devise/shared/links" %>
+    <% end %>
+  </div>
+</div>
