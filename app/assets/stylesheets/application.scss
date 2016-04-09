@@ -1,8 +1,6 @@
 $brand-primary: #7d26cd;
-$navbar-default-link-color: #7d26cd;
-$navbar-default-link-hover-color: #a27dc3;
+$navbar-default-link-hover-color: #7d26cd;
 $navbar-default-link-active-color: #7d26cd;
-$navbar-default-link-active-bg: #d0b6e8;
 
 $body-bg: #ffffff;
 $text-color: #000;
@@ -29,12 +27,14 @@ html, body {
   margin-left: -57px;
 }
 
-
-
 .container {
   width: 100%;
   padding-left: 0;
   padding-right: 0;
+}
+
+.navbar-nav > li > a {
+  font-size: 200%;
 }
 
 /*********************
