@@ -17,6 +17,10 @@ html, body {
   width: 100%;
 }
 
+/*********************
+****** NAVBAR ********
+*********************/
+
 .brand-logo {
   position: absolute;
   width: 100%;
@@ -25,13 +29,17 @@ html, body {
   margin-left: -57px;
 }
 
+
+
 .container {
   width: 100%;
   padding-left: 0;
   padding-right: 0;
 }
 
-/* padded section */
+/*********************
+*** padded section ***
+*********************/
 .pad-section {
   padding: 50px 0;
 }
@@ -46,6 +54,10 @@ html, body {
   -o-background-size: cover;
   background-size: cover;
 }
+
+/*********************
+**** content mod *****
+*********************/
 
 .create-content {
   padding-top: 70px;
@@ -62,41 +74,6 @@ html, body {
   font-weight: 700;
   margin: 0;
   padding: 0;
-}
-
-footer {
-  padding: 20px 0;
-}
-footer .glyphicon {
-  color: #333333;
-  font-size: 60px;
-}
-footer .glyphicon:hover {
-  color: #306d9f;
-}
-
-.form-user { max-width: 600px; padding: 15px;
-  margin: 0 auto;
-}
-
-.form-user input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-user .form-control {
-    position: relative;
-    height: auto;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 10px;
-    font-size: 16px;
-}
-
-.btn-remove {
-  margin-left: 10px;
-  margin-top: 27px;
 }
 
 .vcenter {
@@ -127,4 +104,43 @@ p {
   padding: 20px 10px;
   color: $gray-lighter;
   background-color: $brand-primary;
+}
+
+/*********************
+******* footer *******
+*********************/
+
+footer {
+  padding: 20px 0;
+}
+footer .glyphicon {
+  color: #333333;
+  font-size: 60px;
+}
+footer .glyphicon:hover {
+  color: #306d9f;
+}
+
+
+/*********************
+****** user form *****
+*********************/
+
+.form-user { max-width: 600px; padding: 15px;
+  margin: 0 auto;
+}
+
+.form-user input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-user .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
 }
