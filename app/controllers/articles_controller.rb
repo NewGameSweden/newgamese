@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
 
     gibbon = Gibbon::Request.new
     recipients = {
-      list_id: "7d35e1f26f"
+      list_id: "7d35e1f26f" #Change this to the Medlemmar list when going live
     }
 
     settings = {
@@ -46,16 +46,15 @@ class ArticlesController < ApplicationController
 
     body = {
       template: {
-        id: 116,
+        id: 143573,
         sections: {
-          "header": "#{@article.title}",
-          "body": "#{@article.text}"
+          "title": "#{@article.title}",
+          "paragraph": "#{@article.text}"
         }
       }
     }
 
     gibbon.campaigns(campaign["id"]).content.upsert(body: body)
-
     gibbon.campaigns(campaign["id"]).actions.send.create
 
     if @article.save
