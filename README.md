@@ -40,3 +40,9 @@ rails s -b 0.0.0.0
 
 ```
 Reach the server by navigating to [localhost](http://localhost:3000)
+
+##Deploy 
+This needs to be filled the next time we deploy the server
+
+Environment variables, such as API keys, has to be set in /etc/apache2/envvars otherwise they will not be visible 
+to the rails server
