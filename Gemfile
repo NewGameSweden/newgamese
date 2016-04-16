@@ -31,6 +31,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 # Carrierwave to handle file uploads
 gem 'carrierwave'
+# Stripe to handle transactions
+gem 'stripe'
 
 gem 'minitest', '~> 5.8.0'
 gem 'bootstrap-sass', '~> 3.3.5'

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations" }
 
   resources :users, only: [:index]
+  resources :charges
 
   resources :articles do
     resources :comments
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   post "tickets/:id" => "tickets#activate"
   post "users/:id/send" => "users#send_usr_to_sverok"
   post "admin/handle_admin" => "admin#handle_admin"
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
