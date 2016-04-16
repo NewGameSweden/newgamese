@@ -24,4 +24,10 @@ $(document).ready(function(){
  $(document).click(function(){
    $('.alert').remove();
  });
+ setTimeout(function(){
+   $('.notice').remove();
+ }, 5000);
+ $(document).click(function(){
+   $('.notice').remove();
+ });
 })
