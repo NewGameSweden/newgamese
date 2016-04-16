@@ -15,9 +15,9 @@ class ChargesController < ApplicationController
       :description => 'Newgame.se Stripe customer',
       :currency    => 'sek'
     )
+    redirect_to "/", notice: "Välkommen till New Game!"
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_charge_path
   end
 end
