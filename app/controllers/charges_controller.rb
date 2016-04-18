@@ -15,6 +15,8 @@ class ChargesController < ApplicationController
       :description => 'Newgame.se Stripe customer',
       :currency    => 'sek'
     )
+    current_user.has_paid = true
+    current_user.save
     redirect_to "/", notice: "Välkommen till New Game!"
 
   rescue Stripe::CardError => e
