@@ -41,6 +41,30 @@ rails s -b 0.0.0.0
 ```
 Reach the server by navigating to [localhost](http://localhost:3000)
 
+## Let’s encrypt
+In order to setup https for the server we need to install the Let’s encypt client and run it.
+````bash
+sudo apt-get update
+sudo apt-get install git
+
+#Clone the repository to /opt/letsencrypt/ and navigate to it
+
+sudo git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt
+cd /opt/letsencrypt
+
+#Run letsencrypt-auto with the apche plugin, where example.com is the domain you want your certificate to be valid for (you can #specify multiple domains here, by adding another -d)
+
+./letsencrypt-auto --apache -d example.com
+````
+Access to the server over https:443 should now work.
+A certificate is valid for 90 days. The following command will renew your certificate if it is close to expiry.
+````bash
+./letsencrypt-auto renew
+
+# A cronjob could look like this
+30 2 * * 1 /opt/letsencrypt/letsencrypt-auto renew >> /var/log/le-renew.log
+````
+
 ##Deploy 
 This needs to be filled the next time we deploy the server
 
