@@ -4,15 +4,13 @@ before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
-  #  super
-  #end
+  #   super
+  # end
 
   # POST /resource
-  def create
-    super
-    gibbon = Gibbon::Request.new()
-    gibbon.lists("7d35e1f26f").members(Digest::MD5.hexdigest(resource.email)).upsert(body: {email_address: resource.email, status: "subscribed", merge_fields: {FNAME: resource.first_name, LNAME: resource.surname}})
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit
@@ -31,7 +29,7 @@ before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
-  # in to be expired now. This is useful if the user wants to
+  # in to be expired now. This is useful if the user w2ants to
   # cancel oauth signing in/up in the middle of the process,
   # removing all OAuth session data.
   # def cancel
@@ -42,6 +40,7 @@ before_filter :configure_account_update_params, only: [:update]
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
+    devise_parameter_sanitizer.for(:sign_up) << :email
     devise_parameter_sanitizer.for(:sign_up) << :username
     devise_parameter_sanitizer.for(:sign_up) << :social_security_number
     devise_parameter_sanitizer.for(:sign_up) << :first_name
@@ -55,6 +54,7 @@ before_filter :configure_account_update_params, only: [:update]
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
+    devise_parameter_sanitizer.for(:sign_up) << :email
     devise_parameter_sanitizer.for(:sign_up) << :username
     devise_parameter_sanitizer.for(:sign_up) << :social_security_number
     devise_parameter_sanitizer.for(:sign_up) << :first_name
