@@ -2,7 +2,7 @@
   <%= form_tag charges_path, id: "stripeForm" do %>
     <script src="https://checkout.stripe.com/checkout.js"></script>
 
-    <button id="customButton" class="btn btn-lg btn-primary">Bli medlem</button>
+    <button id="customButton" class="btn btn-lg btn-primary">Betala medlemskap</button>
 
     <script>
       var handler = StripeCheckout.configure({
