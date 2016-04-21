@@ -41,7 +41,15 @@ rails s -b 0.0.0.0
 ```
 Reach the server by navigating to [localhost](http://localhost:3000)
 
-## Let’s encrypt
+
+
+## Deploy 
+This needs to be filled the next time we deploy the server
+
+Environment variables, such as API keys, has to be set in /etc/apache2/envvars otherwise they will not be visible 
+to the rails server
+
+### Let’s encrypt
 In order to setup https for the server we need to install the Let’s encypt client and run it.
 ````bash
 sudo apt-get update
@@ -64,9 +72,3 @@ A certificate is valid for 90 days. The following command will renew your certif
 # A cronjob could look like this
 30 2 * * 1 /opt/letsencrypt/letsencrypt-auto renew >> /var/log/le-renew.log
 ````
-
-##Deploy 
-This needs to be filled the next time we deploy the server
-
-Environment variables, such as API keys, has to be set in /etc/apache2/envvars otherwise they will not be visible 
-to the rails server
