@@ -33,6 +33,8 @@ gem 'devise'
 gem 'carrierwave'
 # Stripe to handle transactions
 gem 'stripe'
+# React for some magic frontend :D
+gem 'react-rails', '~> 1.0'
 
 gem 'minitest', '~> 5.8.0'
 gem 'bootstrap-sass', '~> 3.3.5'
