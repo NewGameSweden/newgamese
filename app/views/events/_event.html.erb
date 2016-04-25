@@ -7,9 +7,9 @@
         <h1><%= event.name %></h1>
       </div>
     </div>
-    <div class="col-sm-1 col-lg-3">
+    <div class="col-sm-10 col-sm-offset-1 col-lg-3 col-lg-offset-0">
       <div class="text-vcenter">
-        <h1><%= event.price.nil? ? "0" : event.price %> kr</h1>
+        <h1><%= event.price.nil? ? "0" : event.price %>kr</h1>
       </div>
     </div>
   </div>
@@ -27,6 +27,8 @@
     <div class="col-sm-10 col-sm-offset-1 col-lg-3 col-lg-offset-0">
       <h3>Plats</h3>
       <p><%= event.location %></p>
+      <h3>Pris</h3>
+      <p><%= event.price %>kr</p>
       <h3>Tid</h3>
       <p><b>Börjar: </b><%= event.start_at.strftime("%d %b, %Y %H:%M:%S") %></p>
       <p><b>Slutar: </b><%= event.end_at.strftime("%d %b, %Y") %></p>
