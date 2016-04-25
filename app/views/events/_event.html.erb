@@ -28,9 +28,10 @@
       <h3>Plats</h3>
       <p><%= event.location %></p>
       <h3>Tid</h3>
-      <p><b>Börjar: </b><%= event.start_at.strftime("%d %b, %Y") %></p>
+      <p><b>Börjar: </b><%= event.start_at.strftime("%d %b, %Y %H:%M:%S") %></p>
       <p><b>Slutar: </b><%= event.end_at.strftime("%d %b, %Y") %></p>
       <p><b>Sista reservering: </b><%= event.last_reserv_date.strftime("%d %b, %Y") %></p>
+      <%= react_component "Countdown", {startTime: event.start_at.strftime("%Y-%m-%d %H:%M:%S")} %>
     </div>
   </div>
 </div>
