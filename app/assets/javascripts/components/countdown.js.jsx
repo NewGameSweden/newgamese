@@ -1,16 +1,19 @@
 var Countdown = React.createClass({
   getInitialState: function() {
-    time = this.setTime(new Date(this.props.startTime).getTime());
+    start = new Date(this.props.startTime).getTime();
+    current = new Date(this.props.currentTime).getTime();
+    time = this.setTime(start, current);
     return {
-      start: new Date(this.props.startTime).getTime(),
+      currentTime: current,
+      start: start,
       daysLeft: time[0],
       hoursLeft: time[1],
       minutesLeft: time[2],
       secondsLeft: time[3],
     };
   },
-  setTime: function(start) {
-    time = start - new Date().getTime();
+  setTime: function(start, currTime) {
+    time = start - currTime;
     days = Math.floor(time/(86400000));
     time -= days*86400000;
     hours = Math.floor(time/(3600000));
@@ -21,7 +24,8 @@ var Countdown = React.createClass({
     return [days, hours, minutes, seconds];
   },
   tick: function() {
-    count = this.setTime(this.state.start);
+    this.setState({currentTime: this.state.currentTime + 1000})
+    count = this.setTime(this.state.start, this.state.currentTime);
     this.setState({daysLeft: count[0]});
     this.setState({hoursLeft: count[1]});
     this.setState({minutesLeft: count[2]});
