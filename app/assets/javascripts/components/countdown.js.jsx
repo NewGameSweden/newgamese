@@ -38,7 +38,7 @@ var Countdown = React.createClass({
     clearInterval(this.interval);
   },
   format: function(number) {
-    if(number < 10) {
+    if(number < 10 && number >= 0) {
       return ("0"+number.toString());
     }
     return (number);
