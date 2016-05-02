@@ -46,10 +46,15 @@ var Countdown = React.createClass({
   render: function() {
     stt = this.state;
     days = this.format(stt.daysLeft);
+    if(this.state.currentTime > this.state.start){
+      out = 'Its showtime!';
+    } else {
+      out = this.format(stt.daysLeft) + ":" + this.format(stt.hoursLeft) + ":" +
+      this.format(stt.minutesLeft) + ":" + this.format(stt.secondsLeft);
+    }
     return (
       <div>
-        <h1 className="countdown">{this.format(stt.daysLeft)}:{this.format(stt.hoursLeft)}:
-          {this.format(stt.minutesLeft)}:{this.format(stt.secondsLeft)}</h1>
+        <h1 className="countdown">{out}</h1>
       </div>
     );
   }
