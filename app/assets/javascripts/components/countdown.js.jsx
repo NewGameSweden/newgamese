@@ -1,11 +1,13 @@
 var Countdown = React.createClass({
   getInitialState: function() {
     start = new Date(this.props.startTime).getTime();
+    end = new Date(this.props.endTime).getTime();
     current = new Date(this.props.currentTime).getTime();
     time = this.setTime(start, current);
     return {
       currentTime: current,
       start: start,
+      end: end,
       daysLeft: time[0],
       hoursLeft: time[1],
       minutesLeft: time[2],
@@ -46,8 +48,10 @@ var Countdown = React.createClass({
   render: function() {
     stt = this.state;
     days = this.format(stt.daysLeft);
-    if(this.state.currentTime > this.state.start){
-      out = 'Its showtime!';
+    if(this.state.currentTime > this.state.end){
+      out = 'Event over';
+    } else if (this.state.currentTime > this.state.start) {
+      out = "It's showtime!";
     } else {
       out = this.format(stt.daysLeft) + ":" + this.format(stt.hoursLeft) + ":" +
       this.format(stt.minutesLeft) + ":" + this.format(stt.secondsLeft);
