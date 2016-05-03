@@ -63,6 +63,6 @@ class User < ActiveRecord::Base
 
   def create_mailchimp_subs
     gibbon = Gibbon::Request.new()
-    gibbon.lists("7d35e1f26f").members(Digest::MD5.hexdigest(@user.email)).upsert(body: {email_address: @user.email, status: "subscribed", merge_fields: {FNAME: @user.first_name, LNAME: @user.surname}})
+    gibbon.lists("7d35e1f26f").members(Digest::MD5.hexdigest(self.email)).upsert(body: {email_address: self.email, status: "subscribed", merge_fields: {FNAME: self.first_name, LNAME: self.surname}})
   end
 end
