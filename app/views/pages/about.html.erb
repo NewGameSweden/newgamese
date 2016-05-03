@@ -1,9 +1,51 @@
+<%= content_for :title do "Föreningen" end %> 
+
 <div class="pad-div", style="background: url(<%= asset_path 'bg.jpg' %>) no-repeat center center fixed">
   <div class="text-vcenter">
-    <h1 cla>Föreningen</h1>
+    <h1>Föreningen</h1>
   </div>
 </div>
 
+<!--
+        OM OSS
+-->
+
+<div class="pad-section title">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-lg-6 col-lg-offset-3">
+      <div class="text-center">
+        <h1>Om oss</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pad-section">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-2">
+      <h2>Vad vi gör</h2>
+      <p>
+        Varje fredag träffas vi på de så kallade Fredagsträffarna, vilket oftast har ett förbestämt tema. Vi spelar spel, äter gott eller bara gör vad vi känner för, ofta sitter vi och bara *pratar/chillar/snackar*. Dessa evenemang går att hitta på vår facebooksida och är menade för medlemmar och alla intresserade. 
+        Vi blir jätteglada då vi träffar nytt folk så har du lust är det bara att komma och prova på!
+        <br />
+
+        Utöver detta arrangerar föreningen större aktiviteter såsom LAN ett antal gånger om året. Dessa kan du hitta i kalendern eller föreningens facebooksida.
+      </p>
+    </div>
+    <dir class="col-sm-4">
+      <h2>Vision</h2>
+      <p>
+        Med visionen “Alla skall ha en möjlighet att uttrycka sin spelhobby” arrangerar vi öppna regelbundna evenemang för alla åldrar, allt från LAN till spelträffar i Göteborg. Vi brinner för att alla skall ha en möjlighet att uttrycka sin spelhobby, oberoende vilken livssituation man är i. Med arrangemang som involverar bräd-, kort-, dator- och konsolspel, förändrar vi spelkulturen och gör den tillgänglig för alla. Stadsbiblioteket, Confusion, Arena 29, Fängelset och Västspel är exempel på föreningar och organisationer som vi samarbetar med.
+      </p>
+    </dir>
+  </div>
+</div>
+
+<!--
+        STYRELSEN
+-->
+
+<div class="pad-div", style="background: url(<%= asset_path 'bg2.jpg' %>) no-repeat center center fixed">
+</div>
 
 <div class="pad-section title">
   <div class="row">
@@ -16,20 +58,35 @@
 </div>
 <div class="pad-section">
   <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <p>
+        Vid årsmötet för 2016 i februari valdes ny styrelse. New Games styrelse bär ansvaret för föreningen och är därav dem som också fattar alla stora beslut. 
+
+        Styrelsen är de du ska kontakta ifall du har några frågor om föreningen men ifall det bara är något litet kan du vända dig till föreningens facebooksida. Innan något bör du läsa igenom sidan Kontakta oss.
+
+        Vill du gräva ner dig i vad styrelsen håller på med kan du läsa detta i styrelsemötenas protokoll.
+      </p>
+      <br />
+    </div>
+  </div>
+  <div class="row">
     <div class="col-sm-2 col-sm-offset-2 col-xs-10 col-xs-offset-1 text-center">
       <%= image_tag('max.jpg', :class => 'img-responsive img-circle') %>
       <h2>Max Horttanainen</h2>
       <h3>Ordförande</h3>
+      <h3><a href="mailto:max.horttanainen@newgame.se">Mail</a></h3>
+    </div>
+    <div class="col-sm-2 col-sm-offset-0 col-xs-10 col-xs-offset-1 text-center">
+      <%= image_tag('victor.jpg', :class => 'img-responsive img-circle') %>
+      <h2>Hampus Baaz</h2>
+      <h3>Kassör</h3>
+      <h3><a href="mailto:hampus.baaz@newgame.se">Mail</a></h3>
     </div>
     <div class="col-sm-2 col-sm-offset-0 col-xs-10 col-xs-offset-1 text-center">
       <%= image_tag('victor.jpg', :class => 'img-responsive img-circle') %>
       <h2>Victor Hanson</h2>
       <h3>Sekreterare</h3>
-    </div>
-    <div class="col-sm-2 col-sm-offset-0 col-xs-10 col-xs-offset-1 text-center">
-      <%= image_tag('vlad.jpg', :class => 'img-responsive img-circle') %>
-      <h2>Vladislav Valiev</h2>
-      <h3>Ledamot</h3>
+      <h3><a href="mailto:victor.hanson@newgame.se">Mail</a></h3>
     </div>
     <div class="col-sm-2 col-sm-offset-0 col-xs-10 col-xs-offset-1 text-center">
       <%= image_tag('big.jpg', :class => 'img-responsive img-circle') %>
