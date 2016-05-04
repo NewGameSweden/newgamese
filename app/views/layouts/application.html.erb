@@ -33,6 +33,14 @@
           <%= nav_link 'Hem', "/" %>
           <%= nav_link 'Nyheter', articles_path %>
           <%= nav_link 'Events', events_path %>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Föreningen<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Om oss", "/about#about" %></li>
+              <li><%= link_to "Styrelsen", "/about#styrelsen" %></li>
+              <li><%= link_to "Medlemskap", "/about#member" %></li>
+            </ul>
+          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="vcenter" style="padding-right: 10px"><%= render 'shared/stripe' %></li>
