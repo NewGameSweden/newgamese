@@ -1,6 +1,7 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'application';
 
 .pad-div {
   height: 30em;
@@ -15,7 +16,12 @@
 }
 
 a.anchor {
-    display: block;
-    position: relative;
-    top: -200px;
+  display: block;
+  position: relative;
+  top: -200px;
+}
+
+.header {
+	color: $brand-primary;
+	font-size: 1.25em;
 }
