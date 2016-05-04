@@ -34,7 +34,7 @@
           <%= nav_link 'Nyheter', articles_path %>
           <%= nav_link 'Events', events_path %>
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Föreningen<span class="caret"></span></a>
+            <a href="/about" class="dropdown-toggle">Föreningen<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><%= link_to "Om oss", "/about#about" %></li>
               <li><%= link_to "Styrelsen", "/about#styrelsen" %></li>
@@ -47,7 +47,7 @@
           <% if user_signed_in? %>
           <li class="vcenter"><%= image_tag(current_user.gravatar_url(:size => 40, :default => "retro"), :class => "avatar") %></li>
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %><span class="caret"></span></a>
+            <a href="/profile" class="dropdown-toggle"><%= current_user.username %><span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><%= link_to('Profile', '/profile') %></li>
               <li class="divider">  </li>
