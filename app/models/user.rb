@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   include Gravtastic
   gravtastic
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :validatable
+    :recoverable, :rememberable, :validatable, :trackable
   validates :username, presence: true, uniqueness: true
   validates :first_name, :surname, :email,  :address, :postal_address, :sex,
     :presence => true, :allow_blank => false
