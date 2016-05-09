@@ -16,6 +16,16 @@ html, body {
   width: 100%;
 }
 
+::-moz-selection {
+    color: white;
+    background: $brand-primary;
+}
+
+::selection {
+    color: white;
+    background: $brand-primary;
+}
+
 /*********************
 ****** NAVBAR ********
 *********************/
