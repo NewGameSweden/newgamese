@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 #Bootsy
 gem 'bootsy'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

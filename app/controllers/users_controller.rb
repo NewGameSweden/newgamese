@@ -39,7 +39,7 @@ class UsersController < ApplicationController
         format.html { redirect_to users_url, alert: response["member_errors"].to_s.gsub(/\[|\]|\"|\>|\{|\}/, '').gsub('=', ' ') }
         format.json { render json: @users }
       else
-        format.html { redirect_to users_url, notice: 'Successfully sent user to Sverok' }
+        format.html { redirect_to users_url, notice: 'Användare skickad till sverok' }
         format.json { render json: @users }
       end
     end

@@ -49,9 +49,9 @@ var Countdown = React.createClass({
     stt = this.state;
     days = this.format(stt.daysLeft);
     if(this.state.currentTime > this.state.end){
-      out = 'Event over';
+      out = 'Event slut';
     } else if (this.state.currentTime > this.state.start) {
-      out = "It's showtime!";
+      out = 'Pågående!';
     } else {
       out = this.format(stt.daysLeft) + ":" + this.format(stt.hoursLeft) + ":" +
       this.format(stt.minutesLeft) + ":" + this.format(stt.secondsLeft);

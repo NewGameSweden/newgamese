@@ -1,35 +1,35 @@
 <div class="row create-content">
   <div class="col-lg-4 col-lg-offset-4 col-sm-10 col-sm-offset-1">
-    <h2>Sign up</h2>
+    <h2>Registrering</h2>
     <%= simple_form_for(@user, url: registration_path(@user), html: { class: 'form-user' }) do |f| %>
-      <%= f.input :email, placeholder: "Email Address", label: false %>
-      <%= f.input :password, placeholder: "Password", label: false %>
-      <%= f.input :password_confirmation, placeholder: "Password confirmation", label: false %>
-      <%= f.input :username, placeholder: "Username", label: false %>
-      <%= f.input :social_security_number, placeholder: "Social security number", label: false %>
+      <%= f.input :email, placeholder: "Email", label: false %>
+      <%= f.input :password, placeholder: "Lösenord", label: false %>
+      <%= f.input :password_confirmation, placeholder: "Lösenordsbekräftelse", label: false %>
+      <%= f.input :username, placeholder: "Användarnamn", label: false %>
+      <%= f.input :social_security_number, placeholder: "Personnummer", label: false %>
       <div class="row">
         <div class="col-lg-6">
-          <%= f.input :first_name, placeholder: "First name", label: false %>
+          <%= f.input :first_name, placeholder: "Namn", label: false %>
         </div>
         <div class="col-lg-6">
-          <%= f.input :surname, placeholder: "Last name", label: false %>
+          <%= f.input :surname, placeholder: "Efternamn", label: false %>
         </div>
       </div>
       <div class="form-group required <%= @user.errors[:sex].nil? ? '' : 'has-error' %>">
-        <%= f.select :sex, options_for_select(["Male", "Female"]), {:include_blank => "Sex"}, {class: "form-control"} %>
+        <%= f.select :sex, options_for_select(["Male", "Female"]), {:include_blank => "Kön"}, {class: "form-control"} %>
         <span class="help-block"><%= @user.errors[:sex][0] %></span>
       </div>
-      <%= f.input :phone_number, placeholder: "Phone number", label: false %>
-      <%= f.input :address, placeholder: "Address", label: false %>
+      <%= f.input :phone_number, placeholder: "Tel. nummer", label: false %>
+      <%= f.input :address, placeholder: "Adress", label: false %>
       <div class="row">
         <div class="col-lg-3">
-          <%= f.input :postal_code, placeholder: "zip", label: false %>
+          <%= f.input :postal_code, placeholder: "Postnummer", label: false %>
         </div>
         <div class="col-lg-9">
-          <%= f.input :postal_address, placeholder: "city", label: false %>
+          <%= f.input :postal_address, placeholder: "Ort", label: false %>
         </div>
       </div>
-      <%= f.button :submit, "Sign up", class: 'btn btn-lg btn-primary btn-block' %>
+      <%= f.button :submit, "Registrera", class: 'btn btn-lg btn-primary btn-block' %>
       <br>
       <%= render "devise/shared/links" %>
     <% end %>

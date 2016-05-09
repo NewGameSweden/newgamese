@@ -1,9 +1,9 @@
 <div class="row create-content">
   <div class="col-lg-4 col-lg-offset-4 col-sm-10 col-sm-offset-1">
     <%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), html: { method: :post }) do |f| %>
-      <h2>Forgot your password?</h2>
-      <%= f.input :email, placeholder: 'Email address', label: false, class: 'sr-only', autofocus: true %>
-      <%= f.button :submit, 'Send reset instructions', class: 'btn btn-lg btn-primary btn-block' %>
+      <h2>Glömt ditt lösenord?</h2>
+      <%= f.input :email, placeholder: 'Email', label: false, class: 'sr-only', autofocus: true %>
+      <%= f.button :submit, 'Skicka återställningsmail', class: 'btn btn-lg btn-primary btn-block' %>
       <%= render 'devise/shared/links' %>
     <% end %>
   </div>

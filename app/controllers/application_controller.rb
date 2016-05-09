@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def authorize_admin
-    redirect_to "/", alert: "Access denied" unless user_signed_in? && current_user.admin?
+    redirect_to "/", alert: "Åtkomst nekad" unless user_signed_in? && current_user.admin?
   end
 end

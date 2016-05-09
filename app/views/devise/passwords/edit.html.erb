@@ -4,7 +4,7 @@
       <%= devise_error_messages! %>
       <%= f.hidden_field :reset_password_token %>
 
-      <h2>Please change your password</h2>
+      <h2>Ändra ditt lösenord</h2>
       <%= f.input :password, placeholder: 'New password', label: false, class: 'sr-only', autocomplete: 'off', autofocus: true %>
       <%= f.input :password_confirmation, placeholder: 'Confirm password', label: false, class: 'sr-only', autocomplete: 'off' %>
       <%= f.button :submit, "Change my password", class: 'btn btn-lg btn-primary btn-block'  %>

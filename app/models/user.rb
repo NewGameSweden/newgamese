@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   def validate_ssc
     ssc=social_security_number
     if ssc.to_s.length < 10 || ssc.to_s.length > 12 || ssc.to_s.length == 11
-      errors.add(:social_security_number, "Should be 10 or 12 numbers")
+      errors.add(:social_security_number, "Måste vara 10 eller 12 siffror långt")
     end
 
     sscString = ssc.to_s
@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
 
     p lastDigit
     if lastDigit != last || checksum%10 != 0
-      errors.add(:social_security_number, "Social security number is invalid")
+      errors.add(:social_security_number, "Personnummer är fel")
     end
   end
 
