@@ -75,7 +75,10 @@
     <% unless(yield(:page_title).empty?)  %>
     <div class="page-header"><%= yield :page_title %></div>
     <% end %>
+
     <%= yield %>
+    
+    <%= render "shared/footer" %>
   </div>
 </body>
 </html>
