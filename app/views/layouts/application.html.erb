@@ -9,6 +9,7 @@
   <%= yield :charts_js %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= analytics_init if GoogleAnalytics.valid_tracker? %>
 </head>
 
 <body>

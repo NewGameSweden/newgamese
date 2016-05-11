@@ -99,6 +99,7 @@ GEM
     github-markdown (0.6.9)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    google-analytics-rails (1.1.0)
     gravtastic (3.2.6)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -232,6 +233,7 @@ DEPENDENCIES
   devise
   gibbon
   github-markdown
+  google-analytics-rails (= 1.1.0)
   gravtastic (~> 3.2.6)
   jbuilder (~> 2.0)
   jquery-rails

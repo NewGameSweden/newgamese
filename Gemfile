@@ -34,6 +34,8 @@ gem 'carrierwave'
 gem 'stripe'
 # React for some magic frontend :D
 gem 'react-rails', '~> 1.0'
+# Google analytics for statistics
+gem 'google-analytics-rails', '1.1.0'
 
 gem 'minitest', '~> 5.8.0'
 gem 'bootstrap-sass', '~> 3.3.5'
