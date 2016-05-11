@@ -25,3 +25,21 @@ a.anchor {
 	color: $brand-primary;
 	font-size: 1.25em;
 }
+
+.profile-table td,
+.profile-table th
+{
+  text-align: right;
+  color: $gray-light;
+  font-size: 2em;
+  font-weight: 300;
+}
+
+.profile-table td + td,
+.profile-table th + th
+{
+	padding-left: 20px;
+  text-align: left;
+  color: $gray;
+  font-weight: 800;
+}
