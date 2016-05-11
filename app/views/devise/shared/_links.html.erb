@@ -5,15 +5,14 @@
 <%- if controller_name != 'sessions' %>
 	<hr />
 	<h2>Redan medlem?</h2>
-  <%= button_to "Logga in", new_session_path(resource_name), :class => "btn btn-lg btn-block"%><br />
+  <%= submit_tag "Logga in", :type => 'button', :class => 'btn btn-lg btn-block', :onclick => "location.href = '/users/sign_in'"%><br />
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
 	<hr />
 	<h2>Inte medlem?</h2>
-  <%= button_to "Registrera", new_registration_path(resource_name), :class => "btn btn-lg btn-block"%><br />
+  <%= submit_tag "Registrera", :type => 'button', :class => 'btn btn-lg btn-block', :onclick => "location.href = '/users/sign_up'"%><br />
 <% end -%>
-
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
   <%= link_to "Fick inget bekräftelse mail?", new_confirmation_path(resource_name) %><br />
