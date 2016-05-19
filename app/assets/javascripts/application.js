@@ -22,7 +22,7 @@
 $(document).ready(function(){
  setTimeout(function(){
    $('.alert').remove();
- }, 5000);
+ }, 20000);
  $(document).click(function(){
    $('.alert').remove();
  });

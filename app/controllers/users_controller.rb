@@ -13,14 +13,14 @@ class UsersController < ApplicationController
         "firstname"=> user.first_name,
         "renewed"=> Date.today.to_s,
         "lastname"=> user.surname,
-        "gender" => user.sex,
+        "gender" => 1,
         "co"=>[],
         "socialsecuritynumber"=> user.social_security_number.to_s,
         "email"=> user.email,
         "phone1"=> user.phone_number,
         "phone2"=>[],
         "street"=> user.address,
-        "zip_code"=> user.postal_code,
+        "zip_code"=> user.postal_code.to_s,
         "city"=> user.postal_address
       }
     }
@@ -34,10 +34,18 @@ class UsersController < ApplicationController
     response = http.request(request)
     response = JSON.parse(response.body)
 
+    p response
+
     respond_to do |format|
-      unless(response["member_errors"].nil?)
-        format.html { redirect_to users_url, alert: response["member_errors"].to_s.gsub(/\[|\]|\"|\>|\{|\}/, '').gsub('=', ' ') }
-        format.json { render json: @users }
+      unless response["member_errors"].nil? && response["member_warnings"] == []
+        unless  response["member_warnings"].nil?
+          format.html { redirect_to users_url, alert: "Användare skickad " + response["member_warnings"].to_s.gsub(/\[|\]|\"|\>|\{|\}/, '').gsub('=', ' ') }
+          format.json { render json: @users }
+        end
+        unless response["member_errors"].nil?
+          format.html { redirect_to users_url, alert: response["member_errors"].to_s.gsub(/\[|\]|\"|\>|\{|\}/, '').gsub('=', ' ') }
+          format.json { render json: @users }
+        end
       else
         format.html { redirect_to users_url, notice: 'Användare skickad till sverok' }
         format.json { render json: @users }
