@@ -29,13 +29,6 @@ class User < ActiveRecord::Base
     sscString = ssc.to_s
     if sscString.length == 12
       ssc = sscString[2..sscString.length].to_i
-      p "123123123123123"
-      p "123123123123123"
-      p "123123123123123"
-      p ssc
-      p "123123123123123"
-      p "123123123123123"
-      p "123123123123123"
     end
     p ssc
     ssc = social_security_number.to_s.split('').collect{ |n| n.to_i }
@@ -55,7 +48,6 @@ class User < ActiveRecord::Base
     closestTen = (newChecksum.div(10)+1)*10
     lastDigit = closestTen - newChecksum
 
-    p lastDigit
     if lastDigit != last || checksum%10 != 0
       errors.add(:social_security_number, "Personnummer är fel")
     end
