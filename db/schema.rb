@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504023048) do
+ActiveRecord::Schema.define(version: 20160526132515) do
 
   create_table "about", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -123,7 +123,6 @@ ActiveRecord::Schema.define(version: 20160504023048) do
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.boolean  "admin",                  limit: 1
-    t.string   "sex",                    limit: 255
     t.boolean  "has_paid",               limit: 1
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255

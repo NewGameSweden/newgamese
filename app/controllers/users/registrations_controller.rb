@@ -45,7 +45,6 @@ before_filter :configure_account_update_params, only: [:update]
     devise_parameter_sanitizer.for(:sign_up) << :social_security_number
     devise_parameter_sanitizer.for(:sign_up) << :first_name
     devise_parameter_sanitizer.for(:sign_up) << :surname
-    devise_parameter_sanitizer.for(:sign_up) << :sex
     devise_parameter_sanitizer.for(:sign_up) << :phone_number
     devise_parameter_sanitizer.for(:sign_up) << :address
     devise_parameter_sanitizer.for(:sign_up) << :postal_code
@@ -59,7 +58,6 @@ before_filter :configure_account_update_params, only: [:update]
     devise_parameter_sanitizer.for(:sign_up) << :social_security_number
     devise_parameter_sanitizer.for(:sign_up) << :first_name
     devise_parameter_sanitizer.for(:sign_up) << :surname
-    devise_parameter_sanitizer.for(:sign_up) << :sex
     devise_parameter_sanitizer.for(:sign_up) << :phone_number
     devise_parameter_sanitizer.for(:sign_up) << :address
     devise_parameter_sanitizer.for(:sign_up) << :postal_code

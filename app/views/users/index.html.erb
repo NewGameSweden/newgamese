@@ -12,9 +12,19 @@
     </div>
     
     <h3>Könsfördelning</h3>
-    <%= pie_chart User.group(:sex).count, colors: ["#F15854", "#5DA5DA"],
-      library: { legend: { position: "none" },
-      chartArea: { left: "0", width: "30%" } } %>
+
+    <%= pie_chart({
+      "Män" => User.all.select{ |a| a.social_security_number.to_s[-2,1].to_i%2==1}.count,
+      "Kvinnor" => User.all.select{ |a| a.social_security_number.to_s[-2,1].to_i%2==0}.count 
+      },
+      colors: ["#5DA5DA", "#F15854"],
+      library: { 
+        chartArea: { 
+          left: "0", 
+          width: "30%" 
+        } 
+      }
+    )%>
 
     <h3>Användare</h3>
     <table class="table table-striped">

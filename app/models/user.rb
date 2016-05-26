@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable, :trackable
   validates :username, presence: true, uniqueness: true
-  validates :first_name, :surname, :email,  :address, :postal_address, :sex,
+  validates :first_name, :surname, :email,  :address, :postal_address,
     :presence => true, :allow_blank => false
   validates :social_security_number, :phone_number, :postal_code,
     :presence => true, :allow_blank => false,
@@ -24,32 +24,32 @@ class User < ActiveRecord::Base
     ssc=social_security_number
     if ssc.to_s.length < 10 || ssc.to_s.length > 12 || ssc.to_s.length == 11
       errors.add(:social_security_number, "Måste vara 10 eller 12 siffror långt")
-    end
-
-    sscString = ssc.to_s
-    if sscString.length == 12
-      ssc = sscString[2..sscString.length].to_i
-    end
-    p ssc
-    ssc = social_security_number.to_s.split('').collect{ |n| n.to_i }
-    last = ssc[ssc.length-1]
-    for i in 0..(ssc.length-1)/2
-      ssc[i*2] = ssc[i*2]*2
-    end
-    checksum = 0
-    for i in 0..(ssc.length-1)
-      ssc[i] = ssc[i].to_s.split('').collect{ |n| n.to_i }
-      for j in 0..(ssc[i].length-1)
-        checksum += ssc[i][j]
+    else 
+      sscString = ssc.to_s
+      if sscString.length == 12
+        ssc = sscString[2..sscString.length].to_i
       end
-    end
+      p ssc
+      ssc = social_security_number.to_s.split('').collect{ |n| n.to_i }
+      last = ssc[ssc.length-1]
+      for i in 0..(ssc.length-1)/2
+        ssc[i*2] = ssc[i*2]*2
+      end
+      checksum = 0
+      for i in 0..(ssc.length-1)
+        ssc[i] = ssc[i].to_s.split('').collect{ |n| n.to_i }
+        for j in 0..(ssc[i].length-1)
+          checksum += ssc[i][j]
+        end
+      end
 
-    newChecksum = checksum-last
-    closestTen = (newChecksum.div(10)+1)*10
-    lastDigit = closestTen - newChecksum
-
-    if lastDigit != last || checksum%10 != 0
-      errors.add(:social_security_number, "Personnummer är fel")
+      newChecksum = checksum-last
+      closestTen = (newChecksum.div(10)+1)*10
+      lastDigit = closestTen - newChecksum
+      
+      if lastDigit != last || checksum%10 != 0
+        errors.add(:social_security_number, "Personnummer är fel")
+      end
     end
   end
 
