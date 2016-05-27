@@ -10,6 +10,10 @@
 }
 
 .main-image {
-  padding-left: 10%;
-  padding-right: 10%;
+	padding: 4em;
+  //-webkit-box-shadow:0 0 40px rgba(255,255,255,128);
+  //box-shadow:0 0 40px rgba(0,0,0,0.8);
+  //background: rgba(255,255,255,0.8);
+  //border-radius: 2em;
+  //-moz-border-radius: 2em;
 }
