@@ -1,15 +1,20 @@
-<hr>
-<div class="pad-section">
+<div class="row">
+	<div class="col-xs-8 col-xs-offset-2">
+		<hr>
+	</div>
+</div>
+<div class="pad-section footer">
 	<div class="row">
-		<div class="col-xs-4 col-xs-offset-2">
-			<h3>Länkar</h3>
-			<%= link_to 'Nyheter', articles_path %><br />
-			<%= link_to 'Event', events_path %><br />
+		<div class="col-xs-4 col-xs-offset-2" data-no-turbolinks>
+			<%= link_to 'Nyheter', articles_path %>
+			<%= link_to 'Event', events_path %>
 			<%= link_to 'Om oss', '/about' %>
 		</div>
-		<div class="col-xs-4" data-no-turbolinks>
-			<h3>Om hemsidan</h3>
-			<%= link_to 'Cookies', '/cookies', :class => 'footer-link' %>
+		<div class="col-xs-1">
+			<%= image_tag "NG_logo.png" %>
+		</div>
+		<div class="col-xs-3" style="margin-right:0"  3data-no-turbolinks>
+			<%= link_to 'Cookies', '/cookies', :class => "footer-link" %>
 		</div>
 	</div>
 </div>

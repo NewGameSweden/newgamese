@@ -135,13 +135,24 @@ p {
 ******* footer *******
 *********************/
 
-footer {
-  padding: 20px 0;
+.footer{
+  padding: 0;
+  a {
+    padding-bottom: 2em;
+    margin: 0.5em;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  img {
+    height: 3em;
+    margin-top: -0.9em;
+  }
 }
-footer .glyphicon {
-  color: #333333;
-  font-size: 60px;
+
+.footer-hr{
+  width: 100%;
 }
-footer .glyphicon:hover {
-  color: #306d9f;
+
+.footer-link {
+  float: right;
 }
