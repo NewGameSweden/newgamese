@@ -85,7 +85,9 @@
     <% end %>
 
     <%= yield %>
-    <%= render "shared/sponsors" %>
+    <% unless /devise\/*/.match(params[:controller]) || /users\/*/.match(params[:controller])%>
+      <%= render "shared/sponsors" %>
+    <% end %>
     <%= render "shared/footer" %>
   </div>
 </body>
