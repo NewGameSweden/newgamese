@@ -159,7 +159,7 @@ p {
 }
 
 /*********************
-******* footer *******
+******* Sponsors *******
 *********************/
 
 .sponsor-image {
@@ -167,4 +167,13 @@ p {
   margin-left: 20px;
   margin-bottom: 20px;
   display: inline-block;
+}
+
+/*********************
+******* Fix *******
+*********************/
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
 }
