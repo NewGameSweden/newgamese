@@ -19,6 +19,7 @@ sv:
       invalid_token: 'Ogiltig token för autentisering.'
       timeout: 'Din session är inte längre giltig, vänligen logga in igen för att fortsätta.'
       inactive: 'Ditt konto har inte aktiverats ännu.'
+      not_found_in_database: 'Användaren kunde inte hittas.'
     sessions:
       signed_in: 'Loggade in.'
       signed_out: 'Loggade ut.'
@@ -31,7 +32,7 @@ sv:
       send_paranoid_instructions: 'Om din email är i vår databas, kommer du att få ett mail med instruktioner om hur du ska aktivera ditt konto inom några minuter.'
       confirmed: 'Ditt konto har bekräftats. Du är nu inloggad.'
     registrations:
-      signed_up: 'Ett nytt konto har skapats. En bekräftelse har skickats till din epost.'
+      signed_up: 'Ett nytt konto har skapats.'
       inactive_signed_up: 'Ett nytt konto har skapats. Du kunde inte logga in, för ditt konto är %{reason}.'
       updated: 'Ditt konto har uppdaterats.'
       destroyed: 'Hej då! Ditt konto har avregistrerats. Vi hoppas få se dig snart igen.'
