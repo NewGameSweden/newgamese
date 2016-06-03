@@ -53,15 +53,18 @@ before_filter :configure_account_update_params, only: [:update]
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.for(:sign_up) << :email
-    devise_parameter_sanitizer.for(:sign_up) << :username
-    devise_parameter_sanitizer.for(:sign_up) << :social_security_number
-    devise_parameter_sanitizer.for(:sign_up) << :first_name
-    devise_parameter_sanitizer.for(:sign_up) << :surname
-    devise_parameter_sanitizer.for(:sign_up) << :phone_number
-    devise_parameter_sanitizer.for(:sign_up) << :address
-    devise_parameter_sanitizer.for(:sign_up) << :postal_code
-    devise_parameter_sanitizer.for(:sign_up) << :postal_address
+    devise_parameter_sanitizer.for(:account_update) << :username
+    devise_parameter_sanitizer.for(:account_update) << :social_security_number
+    devise_parameter_sanitizer.for(:account_update) << :first_name
+    devise_parameter_sanitizer.for(:account_update) << :surname
+    devise_parameter_sanitizer.for(:account_update) << :phone_number
+    devise_parameter_sanitizer.for(:account_update) << :address
+    devise_parameter_sanitizer.for(:account_update) << :postal_code
+    devise_parameter_sanitizer.for(:account_update) << :postal_address
+  end
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
   end
 
   # The path used after sign up.

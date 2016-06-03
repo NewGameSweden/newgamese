@@ -1,8 +1,6 @@
 <div class="row create-content">
   <div class="col-lg-4 col-lg-offset-4 col-sm-10 col-sm-offset-1">
     <h2>Registrering</h2>
-    <%= simple_form_for(@user, url: registration_path(@user), html: { class: 'form-user' }) do |f| %>
-      <%= render "form" %>
-    <% end %>
+    <%= render "form" %>
   </div>
 </div>
