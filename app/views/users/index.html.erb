@@ -30,11 +30,13 @@
     <table class="table table-striped">
       <th>Avatar</th>
       <th>Namn</th>
+      <th>Betalat?</th>
       <th>Send</th>
       <% @users.each do |user| %>
         <tr>
           <td><%= image_tag(user.gravatar_url(:size => 20, :default => "retro"), :class => "avatar") %></td>
           <td><%= user.first_name %> <%= user.surname %></td>
+          <td><% if user.has_paid %><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><% else %><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><% end %></td>
           <td><%= button_to 'Skicka till Sverok', "/users/#{user.id}/send", method: :post %></td>
         </tr>
       <% end %>
