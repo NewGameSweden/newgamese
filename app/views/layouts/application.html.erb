@@ -45,7 +45,9 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="vcenter hidden-sm" style="padding-right: 10px"><%= render 'shared/stripe' %></li>
+          <% unless mobile_device? %>
+            <li class="vcenter" style="padding-right: 10px"><%= render 'shared/stripe' %></li>
+          <% end %>
           <% if user_signed_in? %>
             <li class="vcenter hidden-sm hidden-xs"><%= image_tag(current_user.gravatar_url(:size => 40, :default => "retro"), :class => "avatar") %></li>
             <li class="hidden-lg"><%= link_to('Profil', '/profile') %></li>
@@ -65,7 +67,9 @@
                 <%end%>
               </ul>
             </li>
-            <li class="vcenter hidden-lg" style="padding-right: 10px"><%= render 'shared/stripe' %></li>
+            <% if mobile_device? %>
+              <li class="vcenter" style="padding-right: 10px"><%= render 'shared/stripe' %></li>
+            <% end %>
           <% else %>
             <li><%= link_to('Logga in', new_user_session_path) %></li>
           <% end %>
