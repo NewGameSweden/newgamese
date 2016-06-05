@@ -6,8 +6,9 @@ $grid-float-breakpoint: 1000px;
 $body-bg: #ffffff;
 $text-color: #000;
 
-@import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
 
 /* general styles */
 html, body {
