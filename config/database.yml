@@ -7,6 +7,15 @@ development: &default
   password:
   host: localhost
 
+production: &default
+  adapter: mysql2
+  encoding: utf8
+  database: newgame_dev
+  pool: 5
+  username: root
+  password:
+  host: localhost
+
 test:
   <<: *default
   database: newgame_test
