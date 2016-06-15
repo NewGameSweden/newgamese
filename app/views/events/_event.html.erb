@@ -23,6 +23,47 @@
         <%= link_to 'Destroy', event_path(event), method: :delete, data: {confirm: 'Are you sure?'} %>
         <%= link_to 'Edit', edit_event_path(event) %>
       <% end %>
+
+      <%= form_tag charges_path, id: "event" + event.id.to_s + "form" do %>
+        <script src="https://checkout.stripe.com/checkout.js"></script>
+
+        <button id="event<%= event.id %>-button" class="btn btn-lg btn-primary">Köp biljett</button>
+
+        <script>
+          var amount = <%= event.price %>
+          <% if current_user.has_paid? %>
+            amount -= 50; 
+          <% end %>
+          var handler = StripeCheckout.configure({
+            key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+            locale: 'auto',
+            token: function(token) {
+              var tokenInput = $("<input type=hidden name=stripeToken value='" + token.id + "'/>");
+              var emailInput = $("<input type=hidden name=stripeEmail value='" + token.email + "'/>");
+              var amountInput = $("<input type=hidden name=stripeAmount value='" + amount*100 +"' />");
+              $("#event<%= event.id %>-form").append(tokenInput).append(emailInput).append(amountInput).submit();
+            }
+          });
+
+          $('#event<%= event.id %>-button').on('click', function(e) {
+            // Open Checkout with further options
+            handler.open({
+              name: 'Biljett',
+              image: '<%= asset_path 'NG_logo.png' %>',
+              description: 'Biljett till <%= event.name %>',
+              zipCode: true,
+              currency: "sek",
+              amount: '<%= event.price*100 %>'
+            });
+            e.preventDefault();
+          });
+
+          // Close Checkout on page navigation
+          $(window).on('popstate', function() {
+            handler.close();
+          });
+        </script>
+      <% end %>
     </div>
     <div class="col-sm-10 col-sm-offset-1 col-lg-3 col-lg-offset-0">
       <h3>Plats</h3>
