@@ -13,9 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :events do
-    resources :seatmaps do
-      resources :rows
-    end
+    post 'pay'
   end
 
   get "/" => "home#index"

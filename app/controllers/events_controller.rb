@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :pay]
 
   def index
     @events = Event.all
@@ -41,6 +41,27 @@ class EventsController < ApplicationController
     @event.destroy
 
     redirect_to events_path
+  end
+
+  def pay
+    @event = Event.find(params[:event_id])
+
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :source  => params[:stripeToken]
+    )
+
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => params[:stripeAmount],
+      :description => 'Betalning av ' + @event.name,
+      :currency    => 'sek'
+    )
+
+    redirect_to @event, notice: "Din biljett till " + @event.name + " har betalats"
+
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
   end
 
   private
