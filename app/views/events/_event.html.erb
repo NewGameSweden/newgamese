@@ -24,14 +24,14 @@
         <%= link_to 'Edit', edit_event_path(event) %>
       <% end %>
 
-      <%= form_tag charges_path, id: "event" + event.id.to_s + "form" do %>
+      <%= form_tag event_pay_path(event), id: "event" + event.id.to_s + "form" do %>
         <script src="https://checkout.stripe.com/checkout.js"></script>
 
         <button id="event<%= event.id %>-button" class="btn btn-lg btn-primary">Köp biljett</button>
 
         <script>
           var amount = <%= event.price %>
-          <% if current_user.has_paid? %>
+          <% if user_signed_in? && current_user.has_paid? %>
             amount -= 50; 
           <% end %>
           var handler = StripeCheckout.configure({
@@ -41,7 +41,7 @@
               var tokenInput = $("<input type=hidden name=stripeToken value='" + token.id + "'/>");
               var emailInput = $("<input type=hidden name=stripeEmail value='" + token.email + "'/>");
               var amountInput = $("<input type=hidden name=stripeAmount value='" + amount*100 +"' />");
-              $("#event<%= event.id %>-form").append(tokenInput).append(emailInput).append(amountInput).submit();
+              $("#event<%= event.id.to_s %>form").append(tokenInput).append(emailInput).append(amountInput).submit();
             }
           });
 

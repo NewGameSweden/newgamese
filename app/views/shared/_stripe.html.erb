@@ -5,7 +5,7 @@
     <button id="customButton" class="btn btn-lg btn-primary">Betala medlemskap</button>
 
     <script>
-      var handler = StripeCheckout.configure({
+      var mhandler = StripeCheckout.configure({
         key: '<%= Rails.configuration.stripe[:publishable_key] %>',
         locale: 'auto',
         token: function(token) {
@@ -18,7 +18,7 @@
 
       $('#customButton').on('click', function(e) {
         // Open Checkout with further options
-        handler.open({
+        mhandler.open({
           name: 'Membership',
           image: '<%= asset_path 'NG_logo.png' %>',
           description: 'Membership of New Game',
@@ -31,7 +31,7 @@
 
       // Close Checkout on page navigation
       $(window).on('popstate', function() {
-        handler.close();
+        mhandler.close();
       });
     </script>
   <% end %>
