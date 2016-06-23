@@ -1,0 +1,10 @@
+Din biljett till <%= @event.name %> har betalats!
+=================================================
+
+Hej <%= @mail %>, 
+
+Din biljett till <%= @event.name %> har betalats. 
+Detta är ditt kvitto och biljett till eventet.
+Välkommen!
+
+För att veta mer om eventet klicka <%= link_to "här", event_url(@event) %>

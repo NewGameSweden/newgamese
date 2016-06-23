@@ -60,6 +60,8 @@ class EventsController < ApplicationController
 
     redirect_to @event, notice: "Din biljett till " + @event.name + " har betalats"
 
+    TicketMailer.ticket_mail(params[:stripeEmail], @event).deliver_later
+    
     rescue Stripe::CardError => e
       flash[:error] = e.message
   end

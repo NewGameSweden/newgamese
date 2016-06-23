@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Din biljett till <%= @event.name %> har betalats!</h1>
+    <p>
+      Hej <%= @mail %>, 
+   		<br />
+   		Din biljett till <%= @event.name %> har betalats. 
+   		Detta är ditt kvitto och biljett till eventet.
+   		Välkommen!
+    	<br>
+    	För att veta mer om eventet klicka <%= link_to "här", event_url(@event) %>
+    </p>
+  </body>
+</html>
