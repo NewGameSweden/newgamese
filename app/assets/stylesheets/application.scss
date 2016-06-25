@@ -1,16 +1,191 @@
-@import "materialize/materialize";
+$brand-primary: #7d26cd;
+$navbar-default-link-hover-color: #7d26cd;
+$navbar-default-link-active-color: #7d26cd;
+$grid-float-breakpoint: 1000px;
 
+$body-bg: #ffffff;
+$text-color: #000;
 
-  body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+@import "bootstrap";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+/* general styles */
+html, body {
+  font-family: 'Trebuchet MS', tahoma, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+::-moz-selection {
+    color: white;
+    background: $brand-primary;
+}
+
+::selection {
+    color: white;
+    background: $brand-primary;
+}
+
+/*********************
+****** NAVBAR ********
+*********************/
+
+.brand-logo {
+  position: absolute;
+  width: 100%;
+  padding-left: 50%;
+  margin-top: -21px;
+  margin-left: -57px;
+}
+
+.container {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.navbar-nav > li > a {
+  font-size: 200%;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+ }
+
+/*********************
+*** padded section ***
+*********************/
+.pad-section {
+  padding: 50px 0;
+}
+
+.pad-div {
+  display: table;
+  height: 60em;
+  position: relative;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/*********************
+**** content mod *****
+*********************/
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus, 
+input[type="tel"]:focus {
+  border-color: #7d26cd;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #7d26cd;
+  outline: 0 none;
+}
+
+.create-content {
+  padding-top: 100px;
+}
+
+/* vertical-centered text */
+.text-vcenter {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+.text-vcenter h1, .text-center h1 {
+  font-size: 3.5em;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+}
+
+.vcenter {
+  line-height: 50px;
+}
+
+.avatar {
+  background-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+
+p {
+  font-size: 1.5em;
+  color: $gray;
+}
+
+.alert {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  z-index: 7000;
+  text-align: center;
+}
+
+.title {
+  padding: 20px 10px;
+  color: $gray-lighter;
+  background-color: $brand-primary;
+}
+
+/*********************
+******* Countdown ****
+*********************/
+
+.countdown {
+  color: $gray;
+  font-size: 3.5em;
+}
+
+/*********************
+******* footer *******
+*********************/
+
+.footer{
+  padding: 0;
+  a {
+    padding-bottom: 2em;
+    margin: 0.5em;
+    margin-bottom: 0;
+    margin-top: 0;
   }
-
-  main {
-    flex: 1 0 auto;
+  img {
+    height: 3em;
+    margin-top: -0.9em;
+    margin-left: -2.6em;
   }
+}
 
-  div ul li img{
-  	margin-right: 10px;
-  }
+.footer-hr{
+  width: 100%;
+}
+
+.footer-link {
+  float: right;
+}
+
+/*********************
+******* Sponsors *******
+*********************/
+
+.sponsor-image {
+  max-height: 150px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+/*********************
+******* Fix *******
+*********************/
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}

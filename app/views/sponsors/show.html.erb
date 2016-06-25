@@ -1,0 +1,18 @@
+
+<div class="pad-section">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-lg-4 col-lg-offset-1">
+      <%= image_tag @sponsor.logo, :class => 'img-responsive' %>
+    </div>
+    <div class="col-sm-10 col-sm-offset-1 col-lg-6 col-lg-offset-0">
+      <h1><a href="<%= @sponsor.link %>"><%= @sponsor.name %></a></h1>
+      <p><%= @sponsor.description %></p><br>
+      <p><a href="<%= @sponsor.link %>"><%= @sponsor.link %></a></p><br>
+      <% if user_signed_in? && current_user.admin? %>
+        <%= link_to 'Destroy', sponsor_path(@sponsor), method: :delete, data: {confirm: 'Are you sure?'} %>
+        <%= link_to 'Edit', edit_sponsor_path(@sponsor) %>
+        <%= link_to 'Show', sponsor_path(@sponsor) %>
+      <% end %>
+    </div>
+  </div>
+</div>

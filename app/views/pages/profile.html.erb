@@ -1,23 +1,61 @@
-<div class="container">
-	<h1>Min profil</h1>
-	<div class="row">
-		<div class="col 3"><%= image_tag current_user.gravatar_url(:size => 120) %></div>
-		<div class="col 4 offset 3">
-			<div class="row"><div class="col 4"><h5><%= current_user.username %></h5></div></div>
-			<div class="row"><div class="col 4"><h5><%= current_user.email %></h5></div></div>
-		</div>
-		
-	</div>
-	<div class="row">
-		<p>Member since: <%= distance_of_time_in_words(Time.now, current_user.created_at) %></p>
-		<p>Namn: <%=current_user.first_name %></p>
-		<p>Efternamn: <%=current_user.surname %></p>
-		<p>Tel. :<%= current_user.phone_number%></p>
-		<p>Adress:<%= current_user.address%></p>
-		<p>Postadress:<%= current_user.postal_address%></p>
-		<p>Postnummer:<%= current_user.postal_code%></p>
-	</div>
+<div class="pad-div", style="background: url(<%= asset_path 'bgs/8.jpg' %>) no-repeat center center fixed"></div>
+
+<div class="pad-section title">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+    	<div class="text-vcenter">
+      	<h1><%= current_user.first_name %> "<%= current_user.username%>" <%= current_user.surname %></h1>
+    	</div>
+    </div>
+  </div>
 </div>
-
-
-
+<div class="pad-section">
+  <div class="row">
+  	<div class="col-xs-10 col-xs-offset-1 col-lg-2"><%= image_tag current_user.gravatar_url(:size => 1000), :class => "img-responsive img-circle" %></div>
+  	<div class="col-xs-10 col-xs-offset-1 col-lg-4 col-lg-offset-0">
+  		<table class="profile-table">
+        <tbody>
+          <tr>
+            <td>Namn</td>
+            <td><%= current_user.first_name %> <%= current_user.surname %></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><%= current_user.email.gsub(/@/, ' [at] ').gsub(/\./, ' [dot] ') %></td>
+          </tr>
+          <tr>
+            <td>Personnummer</td>
+            <td><%= current_user.social_security_number %></td>
+          </tr>
+          <tr>
+            <td>Telefon</td>
+            <td><%= current_user.phone_number %></td>
+          </tr>
+          <tr>
+            <td>Adress</td>
+            <td><%= current_user.address %></td>
+          </tr>
+          <tr>
+            <td>Postnr. och ort</td>
+            <td><%= current_user.postal_code %> <%= current_user.postal_address %></td>
+          </tr>
+          <tr>
+            <td>Medlem i</td>
+            <td><%= distance_of_time_in_words(Time.now, current_user.created_at) %></td>
+          </tr>
+          <tr>
+          	<td>Senast inloggad</td>
+          	<td><%= distance_of_time_in_words_to_now(current_user.current_sign_in_at) %> sedan</td>
+          </tr>
+          <tr>
+          	<td>inloggningar</td>
+          	<td><%= current_user.sign_in_count %>st</td>
+          </tr>
+        </tbody>
+      </table>
+  	</div>
+    <div class="col-xs-10 col-xs-offset-1 col-lg-4 col-lg-offset-0">
+      <%= link_to "Redigera information", edit_user_registration_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+  </div>
+</div>

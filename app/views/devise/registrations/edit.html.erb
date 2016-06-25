@@ -1,39 +1,42 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row create-content">
+  <div class="col-lg-4 col-lg-offset-4 col-sm-10 col-sm-offset-1">
+    <h3>Redigera profil</h3>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+		<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+		  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+		  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+		    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+		  <% end %>
+
+			<%= f.input :username, placeholder: "Användarnamn", label: false %>
+			<%= f.input :social_security_number, placeholder: "Personnummer", label: false %>
+			<div class="row" style="margin-right: -15px; margin-left: -15px">
+			  <div class="col-lg-6">
+			    <%= f.input :first_name, placeholder: "Namn", label: false %>
+			  </div>
+			  <div class="col-lg-6">
+			    <%= f.input :surname, placeholder: "Efternamn", label: false %>
+			  </div>
+			</div>
+			<%= f.input :phone_number, placeholder: "Tel. nummer", label: false %>
+			<%= f.input :address, placeholder: "Adress", label: false %>
+			<div class="row" style="margin-right: -15px; margin-left: -15px">
+			  <div class="col-lg-3">
+			    <%= f.input :postal_code, placeholder: "Postnummer", label: false %>
+			  </div>
+			  <div class="col-lg-9">
+			    <%= f.input :postal_address, placeholder: "Ort", label: false %>
+			  </div>
+			</div>
+
+		  <div class="actions">
+		    <%= f.submit "Update", class: 'btn btn-lg btn-primary btn-block'%>
+		  </div>
+		<% end %>
+
+		 <p>Missnöjd? <%= button_to "Ta bort konto", registration_path(resource_name), data: { confirm: "Är du säker på att du vill ta bort ditt konto?" }, method: :delete, class: 'btn btn-lg btn-block' %></p>
+
   </div>
+</div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>

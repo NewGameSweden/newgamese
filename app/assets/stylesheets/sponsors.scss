@@ -1,0 +1,23 @@
+// Place all the styles related to the sponsors controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "application";
+
+body {
+  padding-top: 51px;
+}
+
+.title {
+  padding: 20px 10px;
+  color: $gray-lighter;
+  background-color: $brand-primary;
+}
+
+.pad-div {
+  height: 30em;
+}
+
+.text-vcenter {
+  text-align: left;
+}

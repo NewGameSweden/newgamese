@@ -13,4 +13,23 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .
+
+$(document).ready(function(){
+ setTimeout(function(){
+   $('.alert').remove();
+ }, 20000);
+ $(document).click(function(){
+   $('.alert').remove();
+ });
+ setTimeout(function(){
+   $('.notice').remove();
+ }, 5000);
+ $(document).click(function(){
+   $('.notice').remove();
+ });
+});

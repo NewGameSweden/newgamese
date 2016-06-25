@@ -1,14 +1,27 @@
 Rails.application.routes.draw do
-  
-  devise_for :users
-  devise_for :articles
+
+  resources :sponsors
+
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+  devise_for :users, controllers: { registrations: "users/registrations" }
+
+  resources :users, only: [:index]
+  resources :charges
 
   resources :articles do
     resources :comments
   end
-  
-  root to: "articles#index"
+
+  resources :events do
+    post 'pay'
+  end
+
+  get "/" => "home#index"
+  get "admin" => "admin#index"
   get ":page" => "pages#show"
+  post "tickets/:id" => "tickets#activate"
+  post "users/:id/send" => "users#send_usr_to_sverok"
+  post "admin/handle_admin" => "admin#handle_admin"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

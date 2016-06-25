@@ -1,0 +1,45 @@
+<% content_for :title do "Användare" end %>
+
+<div class="row create-content">
+  <div class="col-lg-8 col-lg-offset-2 col-sm-10 col-sm-offset-1">
+
+    <div class="page-header">
+    	<h1>
+    		<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    		 Användare
+        <small><%= @users.count %> st registrerade användare</small>
+    	</h1>
+    </div>
+    
+    <h3>Könsfördelning</h3>
+
+    <%= pie_chart({
+      "Män" => User.all.select{ |a| a.social_security_number.to_s[-2,1].to_i%2==1}.count,
+      "Kvinnor" => User.all.select{ |a| a.social_security_number.to_s[-2,1].to_i%2==0}.count 
+      },
+      colors: ["#5DA5DA", "#F15854"],
+      library: { 
+        chartArea: { 
+          left: "0", 
+          width: "30%" 
+        } 
+      }
+    )%>
+
+    <h3>Användare</h3>
+    <table class="table table-striped">
+      <th>Avatar</th>
+      <th>Namn</th>
+      <th>Betalat?</th>
+      <th>Send</th>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= image_tag(user.gravatar_url(:size => 20, :default => "retro"), :class => "avatar") %></td>
+          <td><%= user.first_name %> <%= user.surname %></td>
+          <td><% if user.has_paid %><span class="glyphicon glyphicon-ok" aria-hidden="true"></span><% else %><span class="glyphicon glyphicon-remove" aria-hidden="true"></span><% end %></td>
+          <td><%= button_to 'Skicka till Sverok', "/users/#{user.id}/send", method: :post %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+#Bootsy
+gem 'bootsy'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
@@ -14,6 +15,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
+# easy forms
+gem 'simple_form', git: 'https://github.com/plataformatec/simple_form'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -25,8 +28,26 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Use devise for authentication
 gem 'devise'
+# Carrierwave to handle file uploads
+gem 'carrierwave'
+# Stripe to handle transactions
+gem 'stripe'
+# React for some magic frontend :D
+gem 'react-rails', '~> 1.0'
+# Google analytics for statistics
+gem 'google-analytics-rails', '1.1.0'
 
 gem 'minitest', '~> 5.8.0'
+gem 'bootstrap-sass', '~> 3.3.5'
+
+# Markdown for articles
+gem 'github-markdown'
+# Charts
+gem 'chartkick'
+# Wrapper for mailchimp api
+gem 'gibbon'
+# Localization!
+gem 'rails-i18n'
 
 # Use ActiveModel has_secure_password
 #gem 'bcrypt', '~> 3.1.10'
@@ -51,4 +72,3 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

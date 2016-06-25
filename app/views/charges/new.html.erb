@@ -1,0 +1,42 @@
+<div class="row create-content">
+  <div class="col-lg-4 col-lg-offset-4 col-sm-10 col-sm-offset-1">
+
+    <%= form_tag charges_path, id: "stripeForm" do %>
+
+      <script src="https://checkout.stripe.com/checkout.js"></script>
+
+      <button id="customButton" class="btn btn-lg btn-primary">Purchase</button>
+
+      <script>
+        var handler = StripeCheckout.configure({
+          key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+          locale: 'auto',
+          token: function(token) {
+            var tokenInput = $("<input type=hidden name=stripeToken value='" + token.id + "'/>");
+            var emailInput = $("<input type=hidden name=stripeEmail value='" + token.email + "'/>");
+            var amountInput = $("<input type=hidden name=stripeAmount value=10000 />");
+            $("#stripeForm").append(tokenInput).append(emailInput).append(amountInput).submit();
+          }
+        });
+
+        $('#customButton').on('click', function(e) {
+          // Open Checkout with further options
+          handler.open({
+            name: 'Membership',
+            image: '<%= asset_path 'NG_logo.png' %>',
+            description: 'Membership of New Game',
+            zipCode: true,
+            currency: "sek",
+            amount: 10000
+          });
+          e.preventDefault();
+        });
+
+        // Close Checkout on page navigation
+        $(window).on('popstate', function() {
+          handler.close();
+        });
+      </script>
+    <% end %>
+  </div>
+</div>
